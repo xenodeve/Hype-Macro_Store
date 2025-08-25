@@ -233,12 +233,8 @@ F12 → Device Toolbar (Ctrl+Shift+M)
 
 ## 📈 Future Enhancements
 
-- 🛒 **E-commerce Integration** - ระบบสั่งซื้อออนไลน์
-- 🔍 **Product Search** - ค้นหาและกรองสินค้า
-- 👤 **User Accounts** - ระบบสมาชิกและ wishlist
 - 📊 **Analytics Dashboard** - สถิติการเข้าชม
 - 🌍 **Multi-language** - รองรับหลายภาษา
-- 💬 **Live Chat** - ระบบแชทสดกับลูกค้า
 
 ## 👨‍💻 ผู้พัฒนา
 
