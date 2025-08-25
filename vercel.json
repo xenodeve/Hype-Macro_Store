@@ -1,5 +1,9 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
-    { "source": "/Hype-Macro Prototype/(.*)", "destination": "/" }
+    {
+      "source": "/Hype-Marco Prototype/:path*",
+      "destination": "/"
+    }
   ]
 }
