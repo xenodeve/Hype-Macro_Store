@@ -249,6 +249,4 @@ F12 → Device Toolbar (Ctrl+Shift+M)
 
 ---
 
-### 🚀 Happy Gaming! 🎮
-
-*Built with ❤️ for Gaming Community*
+### 🚀 Happy Coding! 🎮
