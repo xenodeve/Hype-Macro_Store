@@ -42,13 +42,13 @@
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8"> <!-- เมนูนำทางแบบ responsive -->
             <div class="flex justify-between items-center h-16"> <!-- แถบเมนู สูง 16 หน่วย จัดให้อยู่กลาง -->
                 <!-- Logo - โลโก้ -->
-                <div class="flex items-center space-x-3 flex-shrink-0 group"> <!-- กลุ่มโลโก้ ไม่หด -->
-                    <div class="w-10 h-8 mouse-logo-glass rounded-lg flex items-center justify-center relative">
+                <div class="flex items-center space-x-3 flex-shrink-0 transform-gpu"> <!-- กลุ่มโลโก้ ไม่หด -->
+                    <div class="w-10 h-8 mouse-logo-glass rounded-lg flex items-center justify-center relative transform-gpu">
                         <!-- ไอคอนโลโก้ liquid glass effect ขยับขึ้นบน -->
                         <i class="fas fa-mouse text-white text-sm"></i> <!-- ไอคอนเมาส์สีขาว -->
                     </div>
                     <span
-                        class="text-xl font-bold text-gray-900 dark:text-white mt-1 outline-2 outline-offset-2 outline-hidden group-hover:outline-solid transition-all duration-500">HYPE-MACRO</span>
+                        class="text-xl font-bold text-gray-900 dark:text-white mt-1 outline-2 outline-offset-2 outline-hidden group-hover:outline-solid">HYPE-MACRO</span>
                     <!-- ชื่อแบรนด์ -->
                 </div>
 
@@ -57,27 +57,27 @@
                     <!-- ซ่อนในมือถือ แสดงในเดสก์ท็อป อยู่กลางหน้าจอ -->
                     <div class="flex space-x-8 mt-1"> <!-- รายการเมนู เว้นระยะ 8 หน่วย -->
                         <a href="#home"
-                            class="navbar-link text-gray-800 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">หน้าหลัก</a>
+                            class="navbar-link font-semibold text-gray-800 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">หน้าหลัก</a>
                         <!-- ลิงก์หน้าหลัก -->
                         <a href="#features"
-                            class="navbar-link text-gray-800 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">คุณสมบัติ</a>
+                            class="navbar-link font-semibold text-gray-800 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">คุณสมบัติ</a>
                         <!-- ลิงก์คุณสมบัติ -->
                         <a href="#reviews"
-                            class="navbar-link text-gray-800 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">รีวิว</a>
+                            class="navbar-link font-semibold text-gray-800 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">รีวิว</a>
                         <!-- ลิงก์รีวิว -->
                         <a href="#products"
-                            class="navbar-link text-gray-800 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">สินค้า</a>
+                            class="navbar-link font-semibold text-gray-800 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">สินค้า</a>
                         <!-- ลิงก์สินค้า -->
                         <a href="#contact"
-                            class="navbar-link text-gray-800 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">ติดต่อ</a>
+                            class="navbar-link font-semibold text-gray-800 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">ติดต่อ</a>
                         <!-- ลิงก์ติดต่อ -->
                     </div>
                 </div>
 
                 <!-- Theme Toggle & Mobile Menu - ปุ่มเปลี่ยนธีมและเมนูมือถือ -->
-                <div class="flex items-center space-x-4 flex-shrink-0"> <!-- กลุ่มปุ่มด้านขวา -->
+                <div class="flex items-center space-x-4 flex-shrink-0 transform-gpu"> <!-- กลุ่มปุ่มด้านขวา -->
                     <!-- Theme Toggle Button - ปุ่มเปลี่ยนธีม -->
-                    <button class="theme-toggle liquid-glass-button p-3 rounded-full flex items-center justify-center"
+                    <button class="theme-toggle liquid-glass-button p-3 rounded-full flex items-center justify-center transform-gpu"
                         id="theme-toggle" title="Toggle theme" aria-label="auto" aria-live="polite">
                         <!-- ปุ่มเปลี่ยนโหมดสี -->
                         <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
@@ -103,7 +103,7 @@
 
                     <!-- Mobile menu button -->
                     <button
-                        class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-900 dark:text-white"
+                        class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-900 dark:text-white transform-gpu"
                         id="mobile-menu-button">
                         <i class="ri-menu-line text-xl"></i>
                     </button>
@@ -115,15 +115,15 @@
                 <div
                     class="mx-4 mt-2 px-2 pt-2 pb-3 space-y-1 bg-white/60 dark:bg-black/60 backdrop-blur-lg rounded-2xl border border-gray-200/30 dark:border-gray-800/30 shadow-lg">
                     <a href="#home"
-                        class="mobile-navbar-link block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-lg transition-colors duration-200">หน้าหลัก</a>
+                        class="mobile-navbar-link font-semibold block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-lg transition-colors duration-200">หน้าหลัก</a>
                     <a href="#features"
-                        class="mobile-navbar-link block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-lg transition-colors duration-200">คุณสมบัติ</a>
+                        class="mobile-navbar-link font-semibold block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-lg transition-colors duration-200">คุณสมบัติ</a>
                     <a href="#reviews"
-                        class="mobile-navbar-link block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-lg transition-colors duration-200">รีวิว</a>
+                        class="mobile-navbar-link font-semibold block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-lg transition-colors duration-200">รีวิว</a>
                     <a href="#products"
-                        class="mobile-navbar-link block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-lg transition-colors duration-200">สินค้า</a>
+                        class="mobile-navbar-link font-semibold block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-lg transition-colors duration-200">สินค้า</a>
                     <a href="#contact"
-                        class="mobile-navbar-link block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-lg transition-colors duration-200">ติดต่อ</a>
+                        class="mobile-navbar-link font-semibold block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-lg transition-colors duration-200">ติดต่อ</a>
                 </div>
             </div> <!-- จบแถบเมนู -->
         </nav> <!-- จบเมนูนำทาง -->
@@ -147,11 +147,11 @@
                 <!-- ข้อความอยู่กลาง สีขาว จัดให้อยู่กึ่งกลางหน้าจอ -->
 
                 <!-- Mouse Logo - โลโก้เมาส์ขนาดเล็ก -->
-                <div class="mb-4 opacity-0 animate-fade-in"> <!-- โลโก้เมาส์ อยู่ด้านบน ลดระยะห่างจาก mb-8 เป็น mb-4 -->
-                    <div class="float-animation"> <!-- คลาสแอนิเมชั่นลอยน้ำ -->
-                        <div class="hero-mouse-logo-glass w-32 h-20 rounded-full flex items-center justify-center">
+                <div class="mb-4 opacity-0 animate-fade-in transform-gpu"> <!-- โลโก้เมาส์ อยู่ด้านบน ลดระยะห่างจาก mb-8 เป็น mb-4 -->
+                    <div class="transform-gpu">
+                        <div class="hero-mouse-logo-glass w-32 h-20 rounded-full flex items-center justify-center transform-gpu">
                             <!-- วงกลมเล็ก พื้นหลังโปร่งใส เบลอ เพิ่มความชัด -->
-                            <i class="fas fa-mouse text-white text-4xl drop-shadow-lg relative z-10"></i>
+                            <i class="fas fa-mouse text-white/120 text-4xl drop-shadow-lg relative z-10 transform-gpu"></i>
                             <!-- ไอคอนเมาส์เล็ก สีขาว มีเงา -->
                         </div>
                     </div>
@@ -194,28 +194,28 @@
     <!-- Features Section -->
     <section id="features" class="py-20 bg-gray-50 dark:bg-gray-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white">
+            <div class="text-center mb-16 group">
+                <h2 class="text-4xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white group-hover:scale-110 transition-all duration-500 ease-in-out">
                     จุดเด่นที่โดดเด่น
                 </h2>
-                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto group-hover:scale-110 transition-transform duration-500 ease-in-out">
                     เทคโนโลยีล้ำสมัยที่จะยกระดับประสบการณ์การเล่นเกมของคุณไปอีกระดับ
                 </p>
             </div>
 
             <!-- Feature 1: Omron Switch -->
-            <div class="mb-20">
+            <div class="mb-20 group">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <div>
-                        <h3 class="text-3xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+                        <h3 class="text-3xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white group-hover:scale-110 transition-transform duration-500 ease-in-out">
                             Omron Switch 20M
                         </h3>
-                        <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+                        <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 group-hover:scale-110 transition-transform duration-500 ease-in-out">
                             สวิตช์คุณภาพสูงจาก Omron ที่ทนทานถึง 20 ล้านครั้งการกด
                             พร้อมความรู้สึกคลิกที่คมชัดและตอบสนองได้อย่างแม่นยำ
                             เหมาะสำหรับเกมเมอร์ที่ต้องการความแม่นยำสูงสุด
                         </p>
-                        <ul class="space-y-3 text-gray-600 dark:text-gray-400">
+                        <ul class="space-y-3 text-gray-600 dark:text-gray-400 group-hover:scale-105 transition-transform duration-500 ease-in-out">
                             <li class="flex items-center"><i class="ri-check-line text-blue mr-3"></i>ทนทานถึง 20
                                 ล้านครั้งการกด</li>
                             <li class="flex items-center"><i
@@ -228,28 +228,28 @@
                     </div>
                     <div class="aspect-square bg-white dark:bg-[#121212] rounded-2xl overflow-hidden shadow-lg p-9">
                         <img src="https://ik.imagekit.io/xenodev/Mini%20Project/1?updatedAt=1756061967873"
-                            alt="Omron Switch" class="w-full h-full object-contain">
+                            alt="Omron Switch" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 ease-in-out">
                     </div>
                 </div>
             </div>
 
             <!-- Feature 2: Premium Materials -->
-            <div class="mb-20">
+            <div class="mb-20 group">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <div
                         class="order-2 lg:order-1 aspect-square bg-white dark:bg-[#121212] rounded-2xl overflow-hidden shadow-lg p-9">
                         <img src="https://ik.imagekit.io/xenodev/Mini%20Project/2?updatedAt=1756062000340"
-                            alt="Premium Materials" class="w-full h-full object-contain">
+                            alt="Premium Materials" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 ease-in-out">
                     </div>
                     <div class="order-1 lg:order-2">
-                        <h3 class="text-3xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+                        <h3 class="text-3xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white group-hover:scale-110 transition-transform duration-500 ease-in-out">
                             วัสดุพรีเมียม
                         </h3>
-                        <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+                        <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 group-hover:scale-110 transition-transform duration-500 ease-in-out">
                             ผลิตจากพลาสติก ABS คุณภาพสูงและเคลือบด้วยสีขาวเนื้อด้านที่ไม่เป็นรอยนิ้วมือ
                             พร้อมด้วยแผ่นรองเมาส์ที่มีคุณภาพเยี่ยมสำหรับการเคลื่อนไหวที่ลื่นไหล
                         </p>
-                        <ul class="space-y-3 text-gray-600 dark:text-gray-400">
+                        <ul class="space-y-3 text-gray-600 dark:text-gray-400 group-hover:scale-105 transition-transform duration-500 ease-in-out">
                             <li class="flex items-center"><i class="ri-check-line text-blue mr-3"></i>พลาสติก ABS
                                 คุณภาพสูง</li>
                             <li class="flex items-center"><i
@@ -263,18 +263,18 @@
                 </div>
             </div>
 
-            <!-- Feature 3: 4K Polling Rate -->
-            <div class="mb-20">
+            <!-- Feature 3: 8K Polling Rate -->
+            <div class="mb-20 group">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <div>
-                        <h3 class="text-3xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+                        <h3 class="text-3xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white group-hover:scale-105 transition-transform duration-500 ease-in-out">
                             Polling Rate 8K
                         </h3>
-                        <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+                        <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 group-hover:scale-105 transition-transform duration-500 ease-in-out">
                             อัตราการอัปเดตตำแหน่ง 8,000 Hz ที่รวดเร็วในตลาด ลดความล่าช้า (latency) ให้เหลือเพียง 0.125ms
                             และมอบประสบการณ์การเล่นเกมที่ราบรื่น
                         </p>
-                        <ul class="space-y-3 text-gray-600 dark:text-gray-400">
+                        <ul class="space-y-3 text-gray-600 dark:text-gray-400 group-hover:scale-105 transition-transform duration-500 ease-in-out">
                             <li class="flex items-center"><i class="ri-check-line text-blue mr-3"></i>8,000 Hz Polling
                                 Rate</li>
                             <li class="flex items-center"><i class="ri-check-line text-blue mr-3"></i>Latency เพียง
@@ -294,7 +294,7 @@
                     <div
                         class="order-2 lg:order-1 aspect-square bg-white dark:bg-[#121212] rounded-2xl overflow-hidden shadow-lg p-9">
                         <img src="https://ik.imagekit.io/xenodev/Mini%20Project/4?updatedAt=1756062923076"
-                            alt="Premium Materials" class="w-full h-full object-contain">
+                            alt="Premium Materials" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 ease-in-out">
                     </div>
                 </div>
             </div>
@@ -303,94 +303,109 @@
 
     <!-- Expert Reviews Section -->
     <section id="reviews" class="py-20 bg-white dark:bg-[#121212]">
-        <div class="container mx-auto px-4">
+        <div class="container mx-auto px-4 group">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">รีวิวจากผู้เชี่ยวชาญ</h2>
-                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 group-hover:scale-110 transition-transform duration-500 ease-in-out">รีวิวจากผู้เชี่ยวชาญ</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto group-hover:scale-110 transition-transform duration-500 ease-in-out">
                     ชมรีวิวและการทดสอบจากผู้เชี่ยวชาญและเกมเมอร์มืออาชีพ
                 </p>
             </div>
 
             <!-- Video Carousel -->
-            <div class="relative">
+            <div class="relative ">
                 <!-- Frame around video group -->
                 <div
-                    class="border-2 border-gray-200 dark:border-gray-700 rounded-3xl p-8 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-xl">
-                    <div class="video-container overflow-hidden">
-                        <div class="video-carousel flex space-x-6 pb-4 transition-transform duration-500"
-                            id="videoCarousel">
-                            <!-- Video 1 -->
-                            <div class="video-item flex-shrink-0 w-120">
-                                <div class="bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg">
-                                    <div class="aspect-video">
-                                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/6NnDidaP1hw"
-                                            title="รีวิววิดีโอ 1" frameborder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowfullscreen>
-                                        </iframe>
-                                    </div>
-                                    <div class="p-4">
-                                        <h3 class="font-semibold text-lg mb-2 text-gray-900 dark:text-white">ค. ค. ค.
-                                            โคตร คุ้ม ค่า!! | VGN Dragonfly F1 MOBA</h3>
-                                        <p class="text-gray-600 dark:text-gray-400 text-sm">ทดสอบความแม่นยำและการตอบสนอง
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Video 2 -->
-                            <div class="video-item flex-shrink-0 w-120">
-                                <div class="bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg">
-                                    <div class="aspect-video">
-                                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/l3dyu3GzGKA"
-                                            title="รีวิววิดีโอ 2" frameborder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowfullscreen>
-                                        </iframe>
-                                    </div>
-                                    <div class="p-4">
-                                        <h3 class="font-semibold text-lg mb-2 text-gray-900 dark:text-white">
-                                            เมาส์ที่ผมอยากให้ทุกคนได้ลอง!</h3>
-                                        <p class="text-gray-600 dark:text-gray-400 text-sm">
-                                            ความคิดเห็นจากนักเล่นเกมมืออาชีพ</p>
+                    class="border-2 border-gray-500 dark:border-gray-400 rounded-3xl p-2 bg-white/50 dark:bg-gray-800/50 dark:shadow-black/40 hover:shadow-black/20 hover:scale-105 transition-all duration-500 ease-in-out backdrop-blur-sm shadow-xl overflow-hidden">
+                    <div
+                        class="rounded-3xl backdrop-blur-sm shadow-xl overflow-hidden">
+                        <div class="video-container overflow-hidden">
+                            <div class="video-carousel flex pb-0 transition-transform duration-500" id="videoCarousel">
+                                <!-- Video 1 -->
+                                <div class="video-item flex-shrink-0 w-120">
+                                    <div
+                                        class="bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg -ml-0">
+                                        <div class="aspect-video">
+                                            <iframe class="w-full h-full"
+                                                src="https://www.youtube.com/embed/6NnDidaP1hw" title="รีวิววิดีโอ 1"
+                                                frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen>
+                                            </iframe>
+                                        </div>
+                                        <div class="p-4">
+                                            <h3 class="font-semibold text-lg mb-2 text-gray-900 dark:text-white">ค. ค.
+                                                ค.
+                                                โคตร คุ้ม ค่า!! | VGN Dragonfly F1 MOBA</h3>
+                                            <p class="text-gray-600 dark:text-gray-400 text-sm">
+                                                ทดสอบความแม่นยำและการตอบสนอง
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- Video 3 -->
-                            <div class="video-item flex-shrink-0 w-120">
-                                <div class="bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg">
-                                    <div class="aspect-video">
-                                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/Zsc3Lp_ukiE"
-                                            title="รีวิววิดีโอ 3" frameborder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowfullscreen>
-                                        </iframe>
-                                    </div>
-                                    <div class="p-4">
-                                        <h3 class="font-semibold text-lg mb-2 text-gray-900 dark:text-white">Top 5
-                                            เมาส์เกมมิ่งที่ Pro Player ใช้เยอะสุด! อัปเดตใหม่ปี 2025</h3>
-                                        <p class="text-gray-600 dark:text-gray-400 text-sm">เปรียบเทียบกับคู่แข่งในตลาด
-                                        </p>
+                                <!-- Video 2 -->
+                                <div class="video-item flex-shrink-0 w-120">
+                                    <div
+                                        class="bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg -ml-1">
+                                        <div class="aspect-video">
+                                            <iframe class="w-full h-full"
+                                                src="https://www.youtube.com/embed/l3dyu3GzGKA" title="รีวิววิดีโอ 2"
+                                                frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen>
+                                            </iframe>
+                                        </div>
+                                        <div class="p-4">
+                                            <h3 class="font-semibold text-lg mb-2 text-gray-900 dark:text-white">
+                                                เมาส์ที่ผมอยากให้ทุกคนได้ลอง!</h3>
+                                            <p class="text-gray-600 dark:text-gray-400 text-sm">
+                                                ความคิดเห็นจากนักเล่นเกมมืออาชีพ</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- Video 4 -->
-                            <div class="video-item flex-shrink-0 w-120">
-                                <div class="bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg">
-                                    <div class="aspect-video">
-                                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/q2rGdFE9Kyg"
-                                            title="รีวิววิดีโอ 4" frameborder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowfullscreen>
-                                        </iframe>
+                                <!-- Video 3 -->
+                                <div class="video-item flex-shrink-0 w-120">
+                                    <div
+                                        class="bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg -ml-1">
+                                        <div class="aspect-video">
+                                            <iframe class="w-full h-full"
+                                                src="https://www.youtube.com/embed/Zsc3Lp_ukiE" title="รีวิววิดีโอ 3"
+                                                frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen>
+                                            </iframe>
+                                        </div>
+                                        <div class="p-4">
+                                            <h3 class="font-semibold text-lg mb-2 text-gray-900 dark:text-white">Top 5
+                                                เมาส์เกมมิ่งที่ Pro Player ใช้เยอะสุด! อัปเดตใหม่ปี 2025</h3>
+                                            <p class="text-gray-600 dark:text-gray-400 text-sm">
+                                                เปรียบเทียบกับคู่แข่งในตลาด
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div class="p-4">
-                                        <h3 class="font-semibold text-lg mb-2 text-gray-900 dark:text-white">4,000 Hz
-                                            Polling Rate แตกต่างกับ 1,000 Hz แค่ไหน? คลิปนี้มีคำตอบ!</h3>
-                                        <p class="text-gray-600 dark:text-gray-400 text-sm">เปรียบเทียบระหว่าง 4,000 Hz
-                                            และ 1,000 Hz</p>
+                                </div>
+
+                                <!-- Video 4 -->
+                                <div class="video-item flex-shrink-0 w-120">
+                                    <div
+                                        class="bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg -ml-0">
+                                        <div class="aspect-video">
+                                            <iframe class="w-full h-full"
+                                                src="https://www.youtube.com/embed/q2rGdFE9Kyg" title="รีวิววิดีโอ 4"
+                                                frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen>
+                                            </iframe>
+                                        </div>
+                                        <div class="p-4">
+                                            <h3 class="font-semibold text-lg mb-2 text-gray-900 dark:text-white">4,000
+                                                Hz
+                                                Polling Rate แตกต่างกับ 1,000 Hz แค่ไหน? คลิปนี้มีคำตอบ!</h3>
+                                            <p class="text-gray-600 dark:text-gray-400 text-sm">เปรียบเทียบระหว่าง 4,000
+                                                Hz
+                                                และ 1,000 Hz</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -409,14 +424,14 @@
     </section> <!-- จบเซคชั่นก่อนหน้า -->
 
     <!-- Products Section - เซคชั่นแสดงสินค้า -->
-    <section id="products" class="py-20 bg-gray-50 dark:bg-gray-900"> <!-- เซคชั่นสินค้า พื้นหลังสีเทาอ่อน -->
+    <section id="products" class="py-20 bg-gray-50 dark:bg-gray-900 group1"> <!-- เซคชั่นสินค้า พื้นหลังสีเทาอ่อน -->
         <div class="max-w-7xl mx-auto px-4 py-8"> <!-- คอนเทนเนอร์หลัก ความกว้างสูงสุด -->
-            <div class="text-center mb-16"> <!-- ส่วนหัวข้อ อยู่กลาง -->
-                <h2 class="text-4xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white">
+            <div class="text-center mb-16 group"> <!-- ส่วนหัวข้อ อยู่กลาง -->
+                <h2 class="text-4xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white group1-hover:scale-110 transition-transform duration-500 ease-in-out">
                     <!-- หัวข้อหลัก ขนาดใหญ่ -->
                     เลือกรุ่นที่ใช่สำหรับคุณ
                 </h2>
-                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto"> <!-- คำบรรยายหัวข้อ -->
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto group1-hover:scale-110 transition-transform duration-500 ease-in-out"> <!-- คำบรรยายหัวข้อ -->
                     4 รุ่นพิเศษที่ออกแบบมาเพื่อตอบสนองทุกความต้องการของเกมเมอร์
                 </p>
             </div>

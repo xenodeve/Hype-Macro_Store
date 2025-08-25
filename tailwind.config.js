@@ -1,24 +1,3 @@
-// tailwind.config = {
-//     darkMode: 'class', // ใช้คลาสสำหรับโหมดมืด
-//     theme: { // ธีมสำหรับการจัดแต่ง
-//         extend: { // ส่วนขยายธีม
-//             colors: { // สีต่างๆ ที่กำหนดเอง
-//                 blue: "#2997FF", // สีน้ำเงินหลัก
-//                 gray: { // สีเทาต่างๆ
-//                     DEFAULT: "#86868b", // สีเทาเริ่มต้น
-//                     100: "#f3f4f6",  // สีเทาอ่อน
-//                     200: "#e6e6e6", // สีเทากลาง
-//                     300: "#ffffff", // สีขาว
-//                 },
-//                 zinc: "#101010", // สีดำเข้ม
-//             },
-//             fontFamily: { // ตระกูลฟอนต์
-//                 'ibmplexthai': ['IBM Plex Sans Thai', 'sans-serif'], // ฟอนต์ IBM Plex Sans Thai
-//             }
-//         }
-//     }
-// }
-
 // กำหนด config สำหรับ dark mode colors
 const darkModeColors = {
     blue: "#2997FF", // สีน้ำเงินหลัก
@@ -41,8 +20,14 @@ window.tailwindConfig = {
                 'ibmplexthai': ['IBM Plex Sans Thai', 'sans-serif'],
             }
         }
+    },
+    plugins: [
+    function ({ addVariant }) { //เพิ่ม variable เพื่อสามารถใช้ Multi Group ได้
+      addVariant('group1-hover', '.group1:hover &');
+      // เพิ่มได้ตามต้องการ
     }
+  ]
 };
 
-// ตั้งค่า Tailwind
+// ตั้งค่า Tailwind โดยใช้ window
 tailwind.config = window.tailwindConfig;
