@@ -243,8 +243,9 @@ F12 → Device Toolbar (Ctrl+Shift+M)
 ## 👨‍💻 ผู้พัฒนา
 
 โปรเจ็กต์นี้พัฒนาโดยนักพัฒนาเว็บไซต์ที่มีความสนใจในเทคโนโลยี Gaming และ Modern Web Development
-
-**Repository**: [Hype-Macro_Store](https://github.com/xenodeve/Hype-Macro_Store)
+- **Dev**: [Xeno](https://github.com/xenodeve)
+- **Student ID**: s0330250
+- **Repository**: [Hype-Macro_Store](https://github.com/xenodeve/Hype-Macro_Store)
 
 ## 📜 License
 
