@@ -24,6 +24,7 @@ window.tailwindConfig = {
     plugins: [
     function ({ addVariant }) { //เพิ่ม variable เพื่อสามารถใช้ Multi Group ได้
       addVariant('group1-hover', '.group1:hover &');
+      addVariant('group2-hover', '.group2:hover &');
       // เพิ่มได้ตามต้องการ
     }
   ]
