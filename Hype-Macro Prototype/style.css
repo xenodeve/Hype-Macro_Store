@@ -1,0 +1,985 @@
+/* ตัวแปร CSS ระดับรูท */
+:root {
+  --icon-fill: #222222;
+  /* สีไอคอนปกติ */
+  --icon-fill-hover: #000;
+  /* สีไอคอนเมื่อ hover */
+}
+
+/* สไตล์สำหรับโหมดมืด */
+[data-theme="dark"] {
+  --icon-fill: #cccccc;
+  /* สีไอคอนในโหมดมืด */
+  --icon-fill-hover: #fff;
+  /* สีไอคอนเมื่อ hover ในโหมดมืด */
+}
+
+/* Dark mode styles - สไตล์สำหรับโหมดมืด */
+.dark {
+  background-color: #000000;
+  /* สีพื้นหลังดำ */
+  color: #ffffff;
+  /* สีข้อความขาว */
+}
+
+/* พื้นหลังขาวในโหมดมืด */
+.dark .bg-white {
+  background-color: #111111;
+  /* เปลี่ยนเป็นสีดำเข้ม */
+}
+
+/* ข้อความดำในโหมดมืด */
+.dark .text-black {
+  color: #ffffff;
+  /* เปลี่ยนเป็นสีขาว */
+}
+
+/* ข้อความเทาเข้มในโหมดมืด */
+.dark .text-gray-900 {
+  color: #ffffff;
+  /* เปลี่ยนเป็นสีขาว */
+}
+
+/* ข้อความเทากลางในโหมดมืด */
+.dark .text-gray-700 {
+  color: #d1d5db;
+  /* เปลี่ยนเป็นสีเทาอ่อน */
+}
+
+/* ข้อความเทาในโหมดมืด */
+.dark .text-gray-600 {
+  color: #9ca3af;
+  /* เปลี่ยนเป็นสีเทาอ่อนกว่า */
+}
+
+/* ขอบเทาอ่อนในโหมดมืด */
+.dark .border-gray-200 {
+  border-color: #374151;
+  /* เปลี่ยนเป็นสีเทาเข้ม */
+}
+
+/* พื้นหลังเทาอ่อนในโหมดมืด */
+.dark .bg-gray-50 {
+  background-color: #1f2937;
+  /* เปลี่ยนเป็นสีเทาเข้ม */
+}
+
+/* พื้นหลังเทาในโหมดมืด */
+.dark .bg-gray-100 {
+  background-color: #374151;
+  /* เปลี่ยนเป็นสีเทาเข้มกว่า */
+}
+
+/* Theme Toggle Animation */
+.sun-and-moon > :is(.moon, .sun, .sun-beams) {
+  transform-origin: center;
+}
+
+.sun-and-moon > :is(.moon, .sun) {
+  fill: var(--icon-fill);
+}
+
+.theme-toggle:is(:hover, :focus-visible) > .sun-and-moon > :is(.moon, .sun) {
+  fill: var(--icon-fill-hover);
+}
+
+.sun-and-moon > .sun-beams {
+  stroke: var(--icon-fill);
+  stroke-width: 2px;
+}
+
+.theme-toggle:is(:hover, :focus-visible) .sun-and-moon > .sun-beams {
+  stroke: var(--icon-fill-hover);
+}
+
+[data-theme="dark"] .sun-and-moon > .sun {
+  transform: scale(1.75);
+}
+
+[data-theme="dark"] .sun-and-moon > .sun-beams {
+  opacity: 0;
+}
+
+[data-theme="dark"] .sun-and-moon > .moon > circle {
+  transform: translateX(-7px);
+}
+
+@supports (cx: 1) {
+  [data-theme="dark"] .sun-and-moon > .moon > circle {
+    cx: 17;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sun-and-moon > .sun {
+    transition: transform 0.5s var(--ease-elastic-3);
+  }
+
+  .sun-and-moon > .sun-beams {
+    transition: transform 0.5s var(--ease-elastic-4), opacity 0.5s var(--ease-3);
+  }
+
+  .sun-and-moon .moon > circle {
+    transition: transform 0.25s var(--ease-out-5);
+  }
+
+  @supports (cx: 1) {
+    .sun-and-moon .moon > circle {
+      transition: cx 0.25s var(--ease-out-5);
+    }
+  }
+
+  [data-theme="dark"] .sun-and-moon > .sun {
+    transition-timing-function: var(--ease-3);
+    transition-duration: 0.25s;
+    transform: scale(1.75);
+  }
+
+  [data-theme="dark"] .sun-and-moon > .sun-beams {
+    transition-duration: 0.15s;
+    transform: rotateZ(-25deg);
+  }
+
+  [data-theme="dark"] .sun-and-moon > .moon > circle {
+    transition-duration: 0.5s;
+    transition-delay: 0.25s;
+  }
+}
+
+/* Custom Styles */
+.hero-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.dark .hero-gradient {
+  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+}
+
+/* Custom animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.product-card {
+  background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+  border: 1px solid #e9ecef;
+}
+
+[data-theme="dark"] .product-card {
+  background: linear-gradient(145deg, #1a1a1a 0%, #2d2d2d 100%);
+  border: 1px solid #404040;
+}
+
+/* Video carousel */
+.video-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.video-carousel {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.video-item {
+  min-width: 300px;
+  margin-right: 20px;
+}
+
+/* Custom width for larger videos */
+.w-120 {
+  width: 36rem;
+  /* 576px - ใหญ่ขึ้นอีก 20% */
+}
+
+/* Custom width for larger products */
+.w-112 {
+  width: 28rem;
+  /* 448px - สำหรับ product cards ที่ใหญ่ขึ้น 1.25 เท่า */
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  /* เพิ่ม padding เพื่อไม่ให้เนื้อหาถูกบัง navbar */
+}
+
+/* Smooth transition for theme (dark / light) changes */
+@media (prefers-reduced-motion: no-preference) {
+  :root,
+  body,
+  header,
+  nav,
+  section,
+  footer,
+  .product-card,
+  .group,
+  .hero-mouse-logo-glass,
+  .mouse-logo-glass,
+  .liquid-glass-button,
+  .video-container,
+  .video-item,
+  .card-hover,
+  .container,
+  .rounded-xl,
+  .rounded-2xl {
+    transition: background-color 300ms ease, color 300ms ease,
+      border-color 300ms ease, box-shadow 300ms ease, fill 300ms ease,
+      stroke 300ms ease;
+  }
+
+  /* Also smooth transitions for pseudo elements and images where appropriate */
+  img,
+  svg {
+    transition: filter 300ms ease, opacity 300ms ease;
+  }
+}
+
+/* Dark mode styles */
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+[data-theme="dark"] body {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* Advanced Liquid Glass Button Styles */
+.liquid-glass-button {
+  /* Base styling */
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  /* Primary glass layer - more advanced background */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.08) 25%,
+    rgba(255, 255, 255, 0.03) 50%,
+    rgba(255, 255, 255, 0.08) 75%,
+    rgba(255, 255, 255, 0.15) 100%
+  );
+  backdrop-filter: blur(25px) saturate(180%) brightness(110%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%) brightness(110%);
+
+  /* Multi-layer border effect */
+  border: 2px solid rgba(255, 255, 255, 0.2);
+
+  /* Advanced shadow system */
+  box-shadow:
+                /* Outer glow */ 0 0 0 1px rgba(255, 255, 255, 0.1),
+    /* Main shadow */ 0 8px 32px rgba(0, 0, 0, 0.12),
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    /* Inner highlights */ inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.1),
+    /* Subtle glow effect */ 0 0 20px rgba(255, 255, 255, 0.05);
+
+  /* Text color */
+  color: rgba(0, 0, 0, 0.75);
+
+  /* Enhanced transitions */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+  transform-origin: center;
+  will-change: transform, box-shadow, filter, backdrop-filter;
+
+  /* Liquid morphing animation */
+  animation: liquidMorphAdvanced 12s ease-in-out infinite;
+}
+
+/* Secondary glass effect layer */
+.liquid-glass-button::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.1) 30%,
+    rgba(255, 255, 255, 0.03) 60%,
+    transparent 100%
+  );
+  opacity: 0.8;
+  transition: inherit;
+  filter: blur(0.5px);
+  z-index: 1;
+}
+
+/* Icon styling */
+.liquid-glass-button i,
+.liquid-glass-button svg {
+  position: relative;
+  z-index: 10;
+  font-size: 1.25rem;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.8));
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .liquid-glass-button {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.04) 25%,
+    rgba(255, 255, 255, 0.015) 50%,
+    rgba(255, 255, 255, 0.04) 75%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  backdrop-filter: blur(25px) saturate(180%) brightness(90%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%) brightness(90%);
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.85);
+
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.4),
+    0 4px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.15),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.03);
+}
+
+[data-theme="dark"] .liquid-glass-button::before {
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 30%,
+    rgba(255, 255, 255, 0.015) 60%,
+    transparent 100%
+  );
+  opacity: 0.6;
+}
+
+[data-theme="dark"] .liquid-glass-button i,
+[data-theme="dark"] .liquid-glass-button svg {
+  color: rgba(255, 255, 255, 0.85);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+}
+
+/* Enhanced hover state */
+.liquid-glass-button:hover {
+  transform: scale(1.08) translateY(-2px);
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.22) 0%,
+    rgba(255, 255, 255, 0.12) 25%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.12) 75%,
+    rgba(255, 255, 255, 0.22) 100%
+  );
+  backdrop-filter: blur(30px) saturate(200%) brightness(120%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%) brightness(120%);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15),
+    0 16px 64px rgba(0, 0, 0, 0.15), 0 8px 32px rgba(0, 0, 0, 0.12),
+    inset 0 3px 6px rgba(255, 255, 255, 0.5),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.15), 0 0 40px rgba(255, 255, 255, 0.1),
+    0 0 80px rgba(255, 255, 255, 0.05);
+
+  animation-play-state: paused;
+  filter: brightness(1.05) saturate(110%);
+}
+
+.liquid-glass-button:hover::before {
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.18) 30%,
+    rgba(255, 255, 255, 0.08) 60%,
+    transparent 100%
+  );
+  opacity: 1;
+  filter: blur(0.3px);
+}
+
+.liquid-glass-button:hover i,
+.liquid-glass-button:hover svg {
+  color: rgba(0, 0, 0, 0.9);
+  transform: scale(1.1);
+  filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.9));
+}
+
+[data-theme="dark"] .liquid-glass-button:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.08) 25%,
+    rgba(255, 255, 255, 0.03) 50%,
+    rgba(255, 255, 255, 0.08) 75%,
+    rgba(255, 255, 255, 0.12) 100%
+  );
+  border: 2px solid rgba(255, 255, 255, 0.18);
+
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 16px 64px rgba(0, 0, 0, 0.6), 0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 3px 6px rgba(255, 255, 255, 0.2),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.4), 0 0 40px rgba(255, 255, 255, 0.05),
+    0 0 80px rgba(255, 255, 255, 0.02);
+}
+
+[data-theme="dark"] .liquid-glass-button:hover::before {
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.08) 30%,
+    rgba(255, 255, 255, 0.03) 60%,
+    transparent 100%
+  );
+  opacity: 0.8;
+}
+
+[data-theme="dark"] .liquid-glass-button:hover i,
+[data-theme="dark"] .liquid-glass-button:hover svg {
+  color: rgba(255, 255, 255, 0.95);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
+}
+
+/* Active/pressed state */
+.liquid-glass-button:active {
+  transform: scale(0.96) translateY(1px);
+  transition: transform 0.1s ease-out;
+
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 4px 16px rgba(0, 0, 0, 0.2),
+    0 2px 8px rgba(0, 0, 0, 0.15), inset 0 2px 8px rgba(0, 0, 0, 0.2),
+    inset 0 -1px 2px rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .liquid-glass-button:active {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 4px 16px rgba(0, 0, 0, 0.8),
+    0 2px 8px rgba(0, 0, 0, 0.6), inset 0 2px 8px rgba(0, 0, 0, 0.6),
+    inset 0 -1px 2px rgba(255, 255, 255, 0.1);
+}
+
+/* Advanced morphing animation */
+@keyframes liquidMorphAdvanced {
+  0%,
+  100% {
+    border-radius: 50%;
+    transform: scale(1) rotate(0deg);
+  }
+
+  16.66% {
+    border-radius: 65% 35% 45% 55% / 50% 70% 30% 50%;
+    transform: scale(1.02) rotate(5deg);
+  }
+
+  33.33% {
+    border-radius: 40% 60% 55% 45% / 65% 35% 65% 35%;
+    transform: scale(1.04) rotate(10deg);
+  }
+
+  50% {
+    border-radius: 55% 45% 35% 65% / 40% 60% 40% 60%;
+    transform: scale(1.03) rotate(15deg);
+  }
+
+  66.66% {
+    border-radius: 45% 55% 65% 35% / 55% 45% 55% 45%;
+    transform: scale(1.02) rotate(10deg);
+  }
+
+  83.33% {
+    border-radius: 60% 40% 50% 50% / 45% 55% 45% 55%;
+    transform: scale(1.01) rotate(5deg);
+  }
+}
+
+/* Shine effect overlay */
+.liquid-glass-button::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.2) 45%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.2) 55%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.liquid-glass-button:hover::after {
+  opacity: 1;
+  animation: liquidShine 2s ease-in-out infinite;
+}
+
+@keyframes liquidShine {
+  0% {
+    transform: translateX(-200%) translateY(-200%) rotate(45deg);
+    opacity: 0;
+  }
+
+  50% {
+    transform: translateX(0%) translateY(0%) rotate(45deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(200%) translateY(200%) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+/* Mouse Logo Liquid Glass Effect */
+.mouse-logo-glass {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(74, 144, 226, 0.8) 0%,
+    rgba(88, 86, 214, 0.8) 25%,
+    rgba(147, 51, 234, 0.8) 50%,
+    rgba(168, 85, 247, 0.8) 75%,
+    rgba(192, 132, 252, 0.8) 100%
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3),
+    0 2px 10px rgba(147, 51, 234, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.mouse-logo-glass::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.1) 40%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.1) 60%,
+    transparent 70%
+  );
+  animation: logoShine 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.mouse-logo-glass::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at 30% 20%,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.1) 30%,
+    transparent 60%
+  );
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+@keyframes logoShine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+
+  50% {
+    transform: translateX(0%) translateY(0%) rotate(45deg);
+  }
+
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+.mouse-logo-glass:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 25px rgba(74, 144, 226, 0.4),
+    0 4px 15px rgba(147, 51, 234, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: all;
+  transition-duration: 500ms;
+}
+
+.mouse-logo-glass:hover::before {
+  animation-duration: 1.5s;
+}
+
+/* Dark mode adjustments for mouse logo */
+[data-theme="dark"] .mouse-logo-glass {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.6) 0%,
+    rgba(79, 70, 229, 0.6) 25%,
+    rgba(124, 58, 237, 0.6) 50%,
+    rgba(147, 51, 234, 0.6) 75%,
+    rgba(168, 85, 247, 0.6) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4),
+    0 2px 10px rgba(124, 58, 237, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .mouse-logo-glass:hover {
+  box-shadow: 0 6px 25px rgba(59, 130, 246, 0.5),
+    0 4px 15px rgba(124, 58, 237, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Hero Section Mouse Logo Liquid Glass Effect */
+.hero-mouse-logo-glass {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.08) 25%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.08) 75%,
+    rgba(255, 255, 255, 0.12) 100%
+  );
+  backdrop-filter: blur(30px) saturate(200%) brightness(120%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%) brightness(120%);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+
+  box-shadow:
+                /* Outer glow layers */ 0 0 0 1px
+      rgba(255, 255, 255, 0.15),
+    0 8px 32px rgba(0, 0, 0, 0.15), 0 4px 16px rgba(0, 0, 0, 0.1),
+    /* Inner glass highlights */ inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.1),
+    /* Ambient glow */ 0 0 40px rgba(255, 255, 255, 0.08),
+    /* Magical sparkle effect */ 0 0 80px rgba(255, 255, 255, 0.04);
+
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+}
+
+/* Multi-layered glass effect */
+.hero-mouse-logo-glass::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at 25% 25%,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.15) 30%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.02) 70%,
+    transparent 100%
+  );
+  opacity: 0.9;
+  transition: inherit;
+  filter: blur(1px);
+  z-index: 1;
+}
+
+/* Liquid tint overlay */
+.hero-mouse-logo-glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    45deg,
+    rgba(74, 144, 226, 0.1) 0%,
+    rgba(139, 69, 19, 0.05) 20%,
+    rgba(147, 51, 234, 0.08) 40%,
+    rgba(168, 85, 247, 0.06) 60%,
+    rgba(59, 130, 246, 0.1) 80%,
+    rgba(99, 102, 241, 0.08) 100%
+  );
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 2;
+  animation: heroLiquidFlow 20s ease-in-out infinite;
+}
+
+/* Hover state with enhanced effects */
+.hero-mouse-logo-glass:hover {
+  transform: scale(1.1) translateY(-4px);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(255, 255, 255, 0.12) 25%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.12) 75%,
+    rgba(255, 255, 255, 0.18) 100%
+  );
+  backdrop-filter: blur(35px) saturate(220%) brightness(130%);
+  -webkit-backdrop-filter: blur(35px) saturate(220%) brightness(130%);
+  border: 2px solid rgba(255, 255, 255, 0.35);
+
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2), 0 16px 64px rgba(0, 0, 0, 0.2),
+    0 8px 32px rgba(0, 0, 0, 0.15), inset 0 3px 6px rgba(255, 255, 255, 0.5),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.15), 0 0 60px rgba(255, 255, 255, 0.12),
+    0 0 120px rgba(255, 255, 255, 0.06),
+    /* Magical sparkle intensified */ 0 0 200px rgba(255, 255, 255, 0.03);
+
+  animation-play-state: paused;
+  filter: brightness(1.1) saturate(110%);
+}
+
+.hero-mouse-logo-glass:hover::before {
+  background: radial-gradient(
+    circle at 25% 25%,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0.25) 30%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.05) 70%,
+    transparent 100%
+  );
+  opacity: 1;
+  filter: blur(0.5px);
+}
+
+.hero-mouse-logo-glass:hover::after {
+  opacity: 0.8;
+  background: linear-gradient(
+    45deg,
+    rgba(74, 144, 226, 0.15) 0%,
+    rgba(139, 69, 19, 0.1) 20%,
+    rgba(147, 51, 234, 0.12) 40%,
+    rgba(168, 85, 247, 0.1) 60%,
+    rgba(59, 130, 246, 0.15) 80%,
+    rgba(99, 102, 241, 0.12) 100%
+  );
+  animation-duration: 10s;
+}
+
+/* Liquid flow animation */
+@keyframes heroLiquidFlow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+    opacity: 0.3;
+  }
+
+  25% {
+    background-position: 100% 0%;
+    opacity: 0.5;
+  }
+
+  50% {
+    background-position: 100% 100%;
+    opacity: 0.4;
+  }
+
+  75% {
+    background-position: 0% 100%;
+    opacity: 0.6;
+  }
+}
+
+/* Float animation enhancement for hero logo */
+.float-animation {
+  animation: heroFloat 6s ease-in-out infinite;
+}
+
+@keyframes heroFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  25% {
+    transform: translateY(-8px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+
+  75% {
+    transform: translateY(-8px);
+  }
+}
+
+.hero-mouse-logo-glass:hover i.fas.fa-mouse {
+  transform: rotate(0deg) scale(1.1) !important;
+}
+
+/* แอนิเมชั่น hover สำหรับ navbar link text*/
+.navbar-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navbar-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 1px;
+}
+
+.navbar-link:hover::after {
+  width: 100%;
+}
+
+/* Dark mode adjustments for navbar links */
+[data-theme="dark"] .navbar-link::after {
+  background: linear-gradient(90deg, #60a5fa, #a78bfa);
+}
+
+/* Mobile navbar link hover animation */
+.mobile-navbar-link {
+  position: relative;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.mobile-navbar-link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 1px;
+}
+
+.mobile-navbar-link:hover::before {
+  width: 100%;
+}
+
+.mobile-navbar-link:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+  transform: translateX(4px);
+}
+
+/* Dark mode adjustments for mobile navbar links */
+[data-theme="dark"] .mobile-navbar-link::before {
+  background: linear-gradient(90deg, #60a5fa, #a78bfa);
+}
+
+[data-theme="dark"] .mobile-navbar-link:hover {
+  background-color: rgba(96, 165, 250, 0.15);
+}
+
+/* Hero CTA Button Styles - สไตล์ปุ่ม CTA ใน Hero Section */
+.hero-cta-primary {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  color: #1f2937;
+  transition: all 0.3s ease;
+}
+
+.hero-cta-primary:hover {
+  background: rgba(255, 255, 255, 1);
+  border: 2px solid rgba(255, 255, 255, 1);
+  transform: scale(1.05);
+}
+
+.hero-cta-secondary {
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.hero-cta-secondary:hover {
+  background: rgba(255, 255, 255, 1);
+  color: #1f2937;
+  transform: scale(1.05);
+}
+
+/* Dark mode adjustments for Hero CTA buttons */
+[data-theme="dark"] .hero-cta-primary {
+  background: rgba(31, 41, 55, 0.8);
+  color: #f9fafb;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+[data-theme="dark"] .hero-cta-primary:hover {
+  background: rgba(31, 41, 55, 0.95);
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="dark"] .hero-cta-secondary {
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  background: rgba(0, 0, 0, 0.3);
+  color: #f9fafb;
+}
+
+[data-theme="dark"] .hero-cta-secondary:hover {
+  background: rgba(31, 41, 55, 0.8);
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+.animate-fade-in-delay {
+  animation: fade-in 0.6s ease-out 0.3s forwards;
+}
+
+.animate-fade-in-delay-2 {
+  animation: fade-in 0.6s ease-out 0.6s forwards;
+}
+
+/* Initial state for animated elements */
+#hero-title,
+#hero-subtitle,
+#hero-cta {
+  transform: translateY(30px);
+}
