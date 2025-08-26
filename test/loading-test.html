@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Page Test - HYPE-MACRO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../src/style.css">
+</head>
+<body class="bg-gray-900 text-white font-mono">
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="text-center">
+            <h1 class="text-4xl font-bold mb-8">Loading Page Test</h1>
+            <button id="testLoadingBtn" class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg font-semibold transition-colors">
+                เริ่มทดสอบหน้าโหลด
+            </button>
+            <p class="mt-4 text-gray-400">คลิกปุ่มเพื่อดูการทำงานของหน้าโหลด</p>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeLoadingPage } from '../src/components/LoadingPage.js';
+        
+        document.getElementById('testLoadingBtn').addEventListener('click', () => {
+            // สร้างหน้าโหลดใหม่
+            const loadingPage = initializeLoadingPage();
+            
+            // ฟัง event การโหลดเสร็จ
+            document.addEventListener('loadingComplete', () => {
+                console.log('การโหลดเสร็จสิ้นแล้ว!');
+            });
+        });
+    </script>
+</body>
+</html>
