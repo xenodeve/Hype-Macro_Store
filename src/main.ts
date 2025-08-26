@@ -1,11 +1,10 @@
 // นำเข้าโมดูลต่างๆ
-import { setRandomVideo } from './components/VideoBackground';
+import { setRandomVideo } from './components/RandomVdoBg';
 import { initializeTheme, onClick, reflectThemePreference, setupSystemThemeListener } from './components/ThemeToggle';
-import { setupMobileMenu, setupSmoothNavigation } from './components/Navigation';
+import { setupMobileMenu, setupSmoothNavigation } from './components/Nav';
 import { initializeVideoCarousel } from './components/VideoCarousel';
 import { setupProductCardsAnimation, setupHeroAnimations, setupFeatureAnimations } from './components/Animations';
 import { initializeLoadingPage } from './components/LoadingPage';
-import { initializeHoverManager } from './components/HoverManager';
 
 // เริ่มต้นหน้าโหลดทันที
 initializeLoadingPage();
@@ -37,9 +36,6 @@ function initializeMainApp(): void {
     setupHeroAnimations();
     setupFeatureAnimations();
     
-    // ตั้งค่าระบบจัดการ group hover
-    initializeHoverManager();
-    
     // ตั้งค่าการฟังการเปลี่ยนแปลงธีมระบบ
     setupSystemThemeListener();
 }
@@ -51,8 +47,8 @@ document.addEventListener('loadingComplete', (): void => {
 
 // เมื่อหน้าเว็บโหลดเสร็จ
 window.onload = (): void => {
-    // เริ่มต้นแอปพลิเคชั่นหลัก (จะทำงานขณะที่หน้าโหลดยังแสดงอยู่)
+    // เริ่มต้นแอปพลิเคชั่นหลักเร็วขึ้น (ลดจาก 1 วินาที เป็น 200ms)
     setTimeout(() => {
         initializeMainApp();
-    }, 1000); // รอ 1 วินาทีเพื่อให้หน้าโหลดแสดงผลก่อน
+    }, 200); // เพิ่มความเร็วให้สอดคล้องกับหน้าโหลด 1 วินาที
 };

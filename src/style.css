@@ -191,10 +191,291 @@
   border: 1px solid #404040;
 }
 
-/* Video carousel */
+/* Bootstrap-style Video Carousel */
+.carousel {
+  position: relative;
+}
+
+.carousel-inner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.carousel-item {
+  position: relative;
+  display: none;
+  width: 100%;
+  transition: transform 0.6s ease-in-out;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.carousel-item.active {
+  display: block;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  list-style: none;
+  margin: 0;
+}
+
+[data-theme="dark"] .carousel-indicators {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.carousel-indicator {
+  box-sizing: content-box;
+  flex: 0 1 auto;
+  width: 10px;
+  height: 10px;
+  margin: 0 4px;
+  text-indent: -999px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 0;
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(4px);
+}
+
+.carousel-indicator:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+  transform: scale(1.2);
+}
+
+.carousel-indicator.active {
+  background-color: #3b82f6;
+  transform: scale(1.3);
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.6),
+              0 0 24px rgba(59, 130, 246, 0.3);
+}
+
+[data-theme="dark"] .carousel-indicator {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="dark"] .carousel-indicator:hover {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+[data-theme="dark"] .carousel-indicator.active {
+  background-color: #60a5fa;
+  box-shadow: 0 0 12px rgba(96, 165, 250, 0.6),
+              0 0 24px rgba(96, 165, 250, 0.3);
+}
+
+/* Add pulsing animation for active indicator */
+.carousel-indicator.active::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 50%;
+  background: inherit;
+  opacity: 0.4;
+  animation: indicatorPulse 2s ease-in-out infinite;
+}
+
+@keyframes indicatorPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.1;
+  }
+}
+
+/* Smooth entrance animation for indicators */
+.carousel-indicators {
+  animation: indicatorsSlideUp 0.6s ease-out;
+}
+
+@keyframes indicatorsSlideUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Auto-play Timeline Styles */
+.auto-play-timeline {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px);
+  border-radius: 0 0 1rem 1rem;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  margin: 0 2px 2px 2px;
+}
+
+[data-theme="dark"] .auto-play-timeline {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.timeline-progress {
+  height: 3px;
+  border-radius: 0;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
+  transition: width 0.1s ease-linear;
+  animation: timelineGlow 2s ease-in-out infinite alternate;
+  width: 0%;
+}
+
+[data-theme="dark"] .timeline-progress {
+  background: linear-gradient(90deg, #60a5fa, #a78bfa, #22d3ee);
+  box-shadow: 0 0 8px rgba(96, 165, 250, 0.6);
+}
+
+@keyframes timelineGlow {
+  from {
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
+  }
+  to {
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.8), 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+}
+
+[data-theme="dark"] .timeline-progress {
+  animation: timelineGlowDark 2s ease-in-out infinite alternate;
+}
+
+@keyframes timelineGlowDark {
+  from {
+    box-shadow: 0 0 8px rgba(96, 165, 250, 0.6);
+  }
+  to {
+    box-shadow: 0 0 12px rgba(96, 165, 250, 0.9), 0 0 20px rgba(96, 165, 250, 0.4);
+  }
+}
+
+/* Timeline paused state */
+.timeline-progress.paused {
+  animation-play-state: paused;
+  opacity: 0.6;
+}
+
+/* Timeline stopped state */
+.auto-play-timeline.stopped {
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+/* Timeline hover effect */
+.auto-play-timeline:hover .timeline-progress {
+  height: 4px;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.8), 0 0 25px rgba(59, 130, 246, 0.4);
+}
+
+/* Ensure timeline stays within carousel bounds */
+.carousel.slide {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+}
+
+.carousel-inner {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+/* Fix for timeline overflow */
+.auto-play-timeline {
+  margin: 0;
+  padding: 0;
+  border-radius: 0 0 calc(1rem - 2px) calc(1rem - 2px);
+  max-width: calc(100% - 4px);
+  box-sizing: border-box;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+}
+
+.timeline-progress {
+  max-width: 100%;
+  box-sizing: border-box;
+  border-radius: 0 0 calc(1rem - 2px) calc(1rem - 2px);
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+  color: #fff;
+  text-align: center;
+  opacity: 0.5;
+  transition: opacity 0.15s ease;
+  text-decoration: none;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+.carousel-control-prev {
+  left: 0;
+}
+
+.carousel-control-next {
+  right: 0;
+}
+
+/* Enhanced carousel animations */
+.carousel-item {
+  animation: fadeInScale 0.6s ease-out;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Video carousel specific styles */
 .video-container {
   position: relative;
   overflow: hidden;
+  border-radius: 1rem;
 }
 
 .video-carousel {
@@ -205,6 +486,9 @@
 .video-item {
   min-width: 300px;
   margin-right: 20px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
 }
 
 /* Custom width for larger videos */
@@ -997,7 +1281,9 @@ html {
   justify-content: center;
   z-index: 10000;
   opacity: 1;
-  transition: opacity 0.6s ease-out;
+  visibility: visible;
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: scale(1);
 }
 
 /* โหมดมืดสำหรับหน้าโหลด */
@@ -1007,19 +1293,74 @@ html {
 
 /* โหมดสว่างสำหรับหน้าโหลด */
 [data-theme="light"] .loading-page {
-  /* background: linear-gradient(135deg, #f8fafc 0%, #f9fafb 50%, #f8fafc 100%); */
-  background: #f9fafb;
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f8fafc 100%);
 }
 
 .loading-page.fade-out {
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
+  transform: scale(0.95);
+  background: transparent !important; /* บังคับให้พื้นหลังโปร่งใสขณะ fade out */
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.8s ease-out !important;
+}
+
+/* เพิ่มการควบคุมพื้นหลังร่วมระหว่างหน้าโหลดและหน้าหลัก */
+body {
+  transition: background-color 0.8s ease-out;
+  position: relative;
+}
+
+/* เมื่อกำลังโหลด ให้ body มีสีเดียวกับหน้าโหลด */
+body:not(.content-loaded) {
+  background-color: #000000;
+}
+
+[data-theme="light"] body:not(.content-loaded) {
+  background-color: #f8fafc;
+}
+
+/* เมื่อโหลดเสร็จ ให้ body ค่อย ๆ เปลี่ยนเป็นโปร่งใส */
+body.content-loaded {
+  background-color: transparent;
+}
+
+/* เพิ่ม overlay เพื่อให้การเปลี่ยนผ่านเรียบร้อยขึ้น */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.8s ease-out;
+  pointer-events: none;
+}
+
+body:not(.content-loaded)::before {
+  opacity: 1;
+  visibility: visible;
 }
 
 .loading-container {
   text-align: center;
   max-width: 400px;
   padding: 2rem;
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.loading-page.fade-out .loading-container {
+  transform: translateY(-50px) scale(0.8);
+  opacity: 0;
+  filter: blur(10px);
 }
 
 /* โลโก้และชื่อแบรนด์ */
@@ -1030,11 +1371,13 @@ html {
   margin-bottom: 0.5rem;
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
   animation: titleGlow 2s ease-in-out infinite alternate;
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-[data-theme="light"] .loading-logo .loading-title {
-  color: #1a202c;
-  text-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+.loading-page.fade-out .loading-logo .loading-title {
+  transform: translateY(-30px) scale(0.8);
+  opacity: 0;
+  filter: blur(5px);
 }
 
 .loading-logo .loading-subtitle {
@@ -1042,6 +1385,28 @@ html {
   color: #a0a0a0;
   margin-bottom: 2rem;
   font-weight: 300;
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s;
+}
+
+.loading-page.fade-out .loading-logo .loading-subtitle {
+  transform: translateY(-20px) scale(0.9);
+  opacity: 0;
+  filter: blur(3px);
+}
+
+.loading-logo .hero-mouse-logo-glass {
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s;
+}
+
+.loading-page.fade-out .loading-logo .hero-mouse-logo-glass {
+  transform: translateY(-40px) scale(0.6) rotate(10deg);
+  opacity: 0;
+  filter: blur(8px);
+}
+
+[data-theme="light"] .loading-logo .loading-title {
+  color: #1a202c;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 [data-theme="light"] .loading-logo .loading-subtitle {
@@ -1084,6 +1449,13 @@ html {
   /* padding: 0.5rem 1rem; */
   background: rgba(0, 255, 136, 0.05);
   border: 1px solid rgba(0, 255, 136, 0.2);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.15s;
+}
+
+.loading-page.fade-out .loader {
+  transform: translateY(30px) scale(0.8) rotate(-5deg);
+  opacity: 0;
+  filter: blur(5px);
 }
 
 [data-theme="light"] .loader {
@@ -1109,6 +1481,13 @@ html {
 /* แถบความคืบหน้า */
 .loading-progress {
   margin-top: 3rem;
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
+}
+
+.loading-page.fade-out .loading-progress {
+  transform: translateY(20px) scale(0.9);
+  opacity: 0;
+  filter: blur(3px);
 }
 
 .progress-bar {
@@ -1119,6 +1498,12 @@ html {
   overflow: hidden;
   margin-bottom: 1rem;
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+}
+
+.loading-page.fade-out .progress-bar {
+  transform: scaleX(0.8);
+  opacity: 0;
 }
 
 [data-theme="light"] .progress-bar {
@@ -1155,6 +1540,13 @@ html {
   font-weight: 300;
   margin: 0;
   animation: textFade 1.5s ease-in-out infinite alternate;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.25s;
+}
+
+.loading-page.fade-out .progress-text {
+  transform: translateY(10px);
+  opacity: 0;
+  filter: blur(2px);
 }
 
 [data-theme="light"] .progress-text {
@@ -1171,24 +1563,37 @@ html {
 }
 
 /* เอฟเฟกต์การโหลดเสร็จ */
-body.content-loaded {
-  animation: contentReveal 0.2s ease-out fade-in;
+body.content-loaded > *:not(.loading-page) {
+  animation: mainContentFadeIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s both;
 }
 
-@keyframes contentReveal {
-  from {
+/* ลบ contentReveal animation เพื่อป้องกันการเปลี่ยนสีของพื้นหลัง */
+
+@keyframes mainContentFadeIn {
+  0% {
     opacity: 0;
-    transform: scale(0.95);
+    transform: translateY(30px) scale(0.95);
+    filter: blur(5px);
   }
-  to {
+  50% {
+    opacity: 0.5;
+    transform: translateY(15px) scale(0.98);
+    filter: blur(2px);
+  }
+  100% {
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0) scale(1);
+    filter: blur(0);
   }
 }
 
 /* ซ่อนเนื้อหาหลักขณะโหลด */
 body:not(.content-loaded) > *:not(.loading-page) {
   opacity: 0;
+  visibility: hidden;
+  transform: translateY(30px) scale(0.95);
+  filter: blur(5px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* รองรับการลด motion สำหรับผู้ที่ไม่ต้องการแอนิเมชั่น */
@@ -1212,157 +1617,4 @@ body:not(.content-loaded) > *:not(.loading-page) {
       box-shadow: 0 0 15px rgba(0, 255, 136, 0.6);
     }
   }
-}
-
-/* ==========================================
-   GROUP HOVER CONFLICT MANAGEMENT STYLES
-   ========================================== */
-
-/* สไตล์สำหรับ group ที่ถูก disable เนื่องจาก conflict */
-.hover-disabled {
-  opacity: 0.5 !important;
-  filter: grayscale(50%) brightness(0.8) !important;
-  transform: scale(0.98) !important;
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-  pointer-events: none !important;
-  position: relative;
-}
-
-/* เอฟเฟกต์เพิ่มเติมสำหรับโหมดมืด */
-[data-theme="dark"] .hover-disabled {
-  filter: grayscale(70%) brightness(0.6) contrast(0.8) !important;
-  box-shadow: 0 0 0 1px rgba(255, 0, 0, 0.2) !important;
-}
-
-/* สไตล์สำหรับแสดง visual conflict indicator */
-.hover-conflict {
-  position: relative;
-  border: 2px dashed rgba(255, 87, 87, 0.6) !important;
-  border-radius: 8px;
-  animation: conflictPulse 1.5s ease-in-out infinite;
-}
-
-/* Dark mode สำหรับ conflict indicator */
-[data-theme="dark"] .hover-conflict {
-  border-color: rgba(255, 107, 107, 0.8) !important;
-  box-shadow: 0 0 10px rgba(255, 87, 87, 0.3) !important;
-}
-
-/* Animation สำหรับ conflict pulse */
-@keyframes conflictPulse {
-  0%, 100% {
-    border-opacity: 0.4;
-    transform: scale(1);
-  }
-  50% {
-    border-opacity: 0.8;
-    transform: scale(1.01);
-  }
-}
-
-/* สไตล์สำหรับ conflict notification */
-.hover-conflict-notification {
-  position: absolute !important;
-  top: -35px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  background: linear-gradient(135deg, rgba(255, 87, 87, 0.95), rgba(255, 107, 107, 0.9)) !important;
-  backdrop-filter: blur(10px) !important;
-  color: white !important;
-  padding: 6px 12px !important;
-  border-radius: 8px !important;
-  font-size: 11px !important;
-  font-weight: 600 !important;
-  white-space: nowrap !important;
-  z-index: 1000 !important;
-  pointer-events: none !important;
-  box-shadow: 0 4px 12px rgba(255, 87, 87, 0.4) !important;
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
-  animation: notificationSlideIn 0.3s ease-out, notificationFadeOut 0.3s ease-in 1.7s forwards !important;
-}
-
-/* Animation สำหรับ notification */
-@keyframes notificationSlideIn {
-  0% {
-    opacity: 0;
-    transform: translateX(-50%) translateY(10px) scale(0.8);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0) scale(1);
-  }
-}
-
-@keyframes notificationFadeOut {
-  0% {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(-50%) translateY(-5px) scale(0.9);
-  }
-}
-
-/* เพิ่ม subtle glow effect สำหรับ group ที่ active */
-.group1:hover:not(.hover-disabled), 
-.group3:hover:not(.hover-disabled) {
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-  transition: all 0.3s ease;
-}
-
-/* Dark mode glow effects */
-[data-theme="dark"] .group1:hover:not(.hover-disabled),
-[data-theme="dark"] .group3:hover:not(.hover-disabled) {
-  box-shadow: 0 0 25px rgba(96, 165, 250, 0.4);
-}
-
-/* เอฟเฟกต์สำหรับ group1 เมื่อไม่ถูก disable */
-.group1:not(.hover-disabled) {
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.group1:hover:not(.hover-disabled) {
-  transform: translateY(-2px) scale(1.02);
-}
-
-/* เอฟเฟกต์สำหรับ group3 เมื่อไม่ถูก disable */
-.group3:not(.hover-disabled) {
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.group3:hover:not(.hover-disabled) {
-  transform: translateY(-2px) scale(1.02);
-}
-
-/* ป้องกันการ select text ใน notification */
-.hover-conflict-notification {
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-}
-
-/* สไตล์เพิ่มเติมสำหรับ responsive design */
-@media (max-width: 768px) {
-  .hover-conflict-notification {
-    font-size: 10px !important;
-    padding: 4px 8px !important;
-    top: -30px !important;
-  }
-  
-  .hover-conflict {
-    border-width: 1px !important;
-  }
-}
-
-/* Debug styles (ใช้สำหรับการ debug เท่านั้น) */
-.debug-hover .group1,
-.debug-hover .group3 {
-  outline: 2px solid rgba(0, 255, 0, 0.3);
-  outline-offset: 2px;
-}
-
-.debug-hover .hover-disabled {
-  outline-color: rgba(255, 0, 0, 0.5) !important;
 }

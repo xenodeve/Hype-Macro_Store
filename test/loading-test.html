@@ -6,30 +6,821 @@
     <title>Loading Page Test - HYPE-MACRO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../src/style.css">
+    <style>
+        body {
+            font-family: 'IBM Plex Sans Thai', sans-serif;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.3s ease;
+        }
+        
+        /* แก้ไขปัญหา initial visibility */
+        .main-interface {
+            opacity: 1;
+            visibility: visible;
+            z-index: 1;
+            position: relative;
+        }
+        
+        .test-container {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .test-button {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+        
+        .test-button:hover {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+        
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 50px;
+            color: #22c55e;
+            font-size: 0.875rem;
+        }
+
+        /* แก้ไข z-index ของ loading page เพื่อไม่ให้ทับ interface */
+        .loading-page {
+            z-index: 9999 !important;
+        }
+
+        /* ป้องกันการซ่อน interface เมื่อเริ่มต้น */
+        body.content-loaded .main-interface {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Theme Toggle Button Styles */
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 0.75rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.05);
+        }
+
+        /* Sun and Moon Icon Styles */
+        .sun-and-moon > :is(.moon, .sun, .sun-beams) {
+            transform-origin: center center;
+        }
+
+        .sun-and-moon > :is(.moon, .sun) {
+            fill: var(--icon-fill);
+        }
+
+        .sun-and-moon > .sun-beams {
+            stroke: var(--icon-fill);
+            stroke-width: 2px;
+        }
+
+        [data-theme="dark"] .sun-and-moon > .sun {
+            transform: scale(1.75);
+        }
+
+        [data-theme="dark"] .sun-and-moon > .sun-beams {
+            opacity: 0;
+        }
+
+        [data-theme="dark"] .sun-and-moon > .moon > circle {
+            transform: translateX(-7px);
+        }
+
+        @supports (cx: 1) {
+            [data-theme="dark"] .sun-and-moon > .moon > circle {
+                cx: 17;
+                transform: translateX(0);
+            }
+        }
+
+        /* CSS Variables for theme colors */
+        :root {
+            --icon-fill: #f59e0b;
+            --icon-fill-hover: #d97706;
+        }
+
+        [data-theme="dark"] {
+            --icon-fill: #fbbf24;
+            --icon-fill-hover: #f59e0b;
+        }
+
+        /* Smooth transitions for theme changes */
+        @media (prefers-reduced-motion: no-preference) {
+            .sun-and-moon > .sun {
+                transition: transform 0.5s ease;
+            }
+
+            .sun-and-moon > .sun-beams {
+                transition: transform 0.5s ease, opacity 0.5s ease;
+            }
+
+            .sun-and-moon .moon > circle {
+                transition: transform 0.25s ease;
+            }
+
+            @supports (cx: 1) {
+                .sun-and-moon .moon > circle {
+                    transition: cx 0.25s ease;
+                }
+            }
+
+            [data-theme="dark"] .sun-and-moon > .sun {
+                transition-timing-function: ease;
+                transition-duration: 0.25s;
+                transform: scale(1.75);
+            }
+
+            [data-theme="dark"] .sun-and-moon > .sun-beams {
+                transition-duration: 0.15s;
+                transform: rotateZ(-25deg);
+            }
+
+            [data-theme="dark"] .sun-and-moon > .moon > circle {
+                transition-duration: 0.5s;
+                transition-delay: 0.25s;
+            }
+        }
+
+        /* Toast Notification Styles */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .toast {
+            min-width: 300px;
+            max-width: 400px;
+            padding: 16px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transform: translateX(400px);
+            transition: all 0.3s ease-in-out;
+            opacity: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .toast.hide {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+
+        .toast-success {
+            background: linear-gradient(135deg, rgba(46, 234, 157, 0.1) 0%, rgba(46, 234, 157, 0.05) 100%);
+            border-color: rgba(46, 234, 157, 0.3);
+            color: #2eea9d;
+        }
+
+        .toast-info {
+            background: linear-gradient(135deg, rgba(90, 129, 255, 0.1) 0%, rgba(90, 129, 255, 0.05) 100%);
+            border-color: rgba(90, 129, 255, 0.3);
+            color: #5a81ff;
+        }
+
+        .toast-warning {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.1) 0%, rgba(255, 193, 7, 0.05) 100%);
+            border-color: rgba(255, 193, 7, 0.3);
+            color: #ffc107;
+        }
+
+        .toast-error {
+            background: linear-gradient(135deg, rgba(254, 108, 155, 0.1) 0%, rgba(254, 108, 155, 0.05) 100%);
+            border-color: rgba(254, 108, 155, 0.3);
+            color: #fe6c9b;
+        }
+
+        .toast-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .toast-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .toast-title {
+            font-weight: 600;
+            font-size: 14px;
+            flex-grow: 1;
+        }
+
+        .toast-close {
+            background: none;
+            border: none;
+            color: currentColor;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .toast-close:hover {
+            opacity: 1;
+        }
+
+        .toast-message {
+            font-size: 13px;
+            opacity: 0.9;
+            line-height: 1.4;
+            margin-left: 30px;
+        }
+
+        .toast-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: currentColor;
+            opacity: 0.3;
+            transform-origin: left;
+            animation: toastProgress 3000ms linear forwards;
+        }
+
+        @keyframes toastProgress {
+            from {
+                transform: scaleX(1);
+            }
+            to {
+                transform: scaleX(0);
+            }
+        }
+
+        /* Dark theme toast adjustments */
+        html.dark .toast {
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .toast-container {
+                left: 10px;
+                right: 10px;
+                top: 20px;
+            }
+            
+            .toast {
+                min-width: auto;
+                max-width: none;
+                transform: translateY(-100px);
+            }
+            
+            .toast.show {
+                transform: translateY(0);
+            }
+            
+            .toast.hide {
+                transform: translateY(-100px);
+            }
+        }
+    </style>
 </head>
-<body class="bg-gray-900 text-white font-mono">
-    <div class="min-h-screen flex items-center justify-center">
-        <div class="text-center">
-            <h1 class="text-4xl font-bold mb-8">Loading Page Test</h1>
-            <button id="testLoadingBtn" class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg font-semibold transition-colors">
+<body class="bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white min-h-screen">
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+    <!-- Background decoration -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-20 left-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+        <div class="absolute top-40 right-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
+        <div class="absolute bottom-20 left-1/2 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+    </div>
+
+    <div class="relative min-h-screen flex items-center justify-center p-6 main-interface">
+        <div class="test-container max-w-md w-full text-center space-y-6">
+            <!-- Header -->
+            <div class="mb-8">
+                <div class="flex justify-between items-center mb-6">
+                    <div class="flex-1"></div>
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto shadow-lg">
+                        <i class="fas fa-mouse text-white text-2xl"></i>
+                    </div>
+                    <div class="flex-1 flex justify-end">
+                    </div>
+                </div>
+                <h1 class="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-2">
+                    Loading Page Test
+                </h1>
+                <p class="text-gray-400 text-sm">
+                    ทดสอบระบบหน้าโหลดของ HYPE-MACRO
+                </p>
+            </div>
+
+            <!-- Status indicator -->
+            <div id="statusIndicator" class="status-indicator mx-auto" style="display: none;">
+                <i class="ri-check-line"></i>
+                <span>พร้อมทำการทดสอบ</span>
+            </div>
+
+            <!-- Test button -->
+            <button id="testLoadingBtn" class="test-button w-full px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105">
+                <i class="fas fa-play mr-2"></i>
                 เริ่มทดสอบหน้าโหลด
             </button>
-            <p class="mt-4 text-gray-400">คลิกปุ่มเพื่อดูการทำงานของหน้าโหลด</p>
+
+            <!-- Theme Toggle Button -->
+            <button class="theme-toggle flex items-center justify-center mx-auto mt-4 mb-4" id="theme-toggle" title="Toggle theme" aria-label="auto" aria-live="polite">
+                <svg class="sun-and-moon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24">
+                    <mask class="moon" id="moon-mask">
+                        <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                        <circle cx="24" cy="10" r="6" fill="black" />
+                    </mask>
+                    <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
+                    <g class="sun-beams" stroke="currentColor">
+                        <line x1="12" y1="1" x2="12" y2="3" />
+                        <line x1="12" y1="21" x2="12" y2="23" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                        <line x1="1" y1="12" x2="3" y2="12" />
+                        <line x1="21" y1="12" x2="23" y2="12" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </g>
+                </svg>
+                <span class="ml-2 text-sm">เปลี่ยน Theme</span>
+            </button>
+
+            <!-- Instructions -->
+            <div class="bg-gray-800/50 rounded-lg p-4 text-left text-sm space-y-2">
+                <h3 class="font-semibold text-blue-400 mb-2">
+                    <i class="ri-information-line mr-2"></i>
+                    คำแนะนำการใช้งาน
+                </h3>
+                <ul class="text-gray-300 space-y-1">
+                    <li>• คลิกปุ่มหรือกด <kbd class="px-1 py-0.5 bg-gray-700 rounded text-xs">Space</kbd> เพื่อเริ่มทดสอบ</li>
+                    <li>• กดปุ่ม <i class="fas fa-sun text-yellow-400 text-xs"></i>/<i class="fas fa-moon text-blue-300 text-xs"></i> เพื่อเปลี่ยน Dark/Light mode</li>
+                    <li>• ระบบจะแสดงหน้าโหลดเป็นเวลา <span class="text-green-400 font-semibold">1 วินาที</span> (เร็วขึ้น!)</li>
+                    <li>• สามารถดูการทำงานใน Console (F12)</li>
+                    <li>• ทดสอบได้หลายครั้งตามต้องการ</li>
+                    <li>• Status indicator จะแสดงสถานะการทำงาน</li>
+                </ul>
+            </div>
+
+            <!-- Feature showcase -->
+            <div class="grid grid-cols-3 gap-3 text-xs">
+                <div class="bg-green-500/10 border border-green-500/20 rounded-lg p-3">
+                    <i class="ri-magic-line text-green-400 text-lg mb-2 block"></i>
+                    <div class="text-green-300 font-medium">Morphing Text</div>
+                    <div class="text-gray-400">เอฟเฟกต์ข้อความ</div>
+                </div>
+                <div class="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3">
+                    <i class="fas fa-chart-line text-blue-400 text-lg mb-2 block"></i>
+                    <div class="text-blue-300 font-medium">Progress Bar</div>
+                    <div class="text-gray-400">แถบความคืบหน้า</div>
+                </div>
+                <div class="bg-purple-500/10 border border-purple-500/20 rounded-lg p-3">
+                    <i class="fas fa-palette text-purple-400 text-lg mb-2 block"></i>
+                    <div class="text-purple-300 font-medium">Theme Toggle</div>
+                    <div class="text-gray-400">Dark/Light Mode</div>
+                </div>
+            </div>
         </div>
     </div>
 
     <script type="module">
-        import { initializeLoadingPage } from '../src/components/LoadingPage.js';
-        
-        document.getElementById('testLoadingBtn').addEventListener('click', () => {
-            // สร้างหน้าโหลดใหม่
-            const loadingPage = initializeLoadingPage();
-            
-            // ฟัง event การโหลดเสร็จ
-            document.addEventListener('loadingComplete', () => {
+        // Toast Manager Class
+        class ToastManager {
+            constructor() {
+                this.container = document.getElementById('toast-container');
+                this.toasts = new Map();
+                this.toastId = 0;
+            }
+
+            show(message, type = 'info', duration = 3000) {
+                const id = ++this.toastId;
+                const toast = this.createToast(id, message, type, duration);
+                
+                this.container.appendChild(toast);
+                this.toasts.set(id, toast);
+
+                // Show animation
+                requestAnimationFrame(() => {
+                    toast.classList.add('show');
+                });
+
+                // Auto remove
+                if (duration > 0) {
+                    setTimeout(() => {
+                        this.hide(id);
+                    }, duration);
+                }
+
+                return id;
+            }
+
+            createToast(id, message, type, duration) {
+                const toast = document.createElement('div');
+                toast.className = `toast toast-${type}`;
+                toast.setAttribute('data-toast-id', id);
+
+                const icons = {
+                    success: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="toast-icon">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>`,
+                    info: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="toast-icon">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                    </svg>`,
+                    warning: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="toast-icon">
+                        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                    </svg>`,
+                    error: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="toast-icon">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                    </svg>`
+                };
+
+                const titles = {
+                    success: 'สำเร็จ!',
+                    info: 'ข้อมูล',
+                    warning: 'คำเตือน',
+                    error: 'เกิดข้อผิดพลาด'
+                };
+
+                toast.innerHTML = `
+                    <div class="toast-header">
+                        ${icons[type]}
+                        <div class="toast-title">${titles[type]}</div>
+                        <button class="toast-close" onclick="window.toastManager.hide(${id})">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 16px; height: 16px;">
+                                <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="toast-message">${message}</div>
+                    ${duration > 0 ? '<div class="toast-progress"></div>' : ''}
+                `;
+
+                return toast;
+            }
+
+            hide(id) {
+                const toast = this.toasts.get(id);
+                if (toast) {
+                    toast.classList.add('hide');
+                    setTimeout(() => {
+                        if (toast.parentNode) {
+                            toast.parentNode.removeChild(toast);
+                        }
+                        this.toasts.delete(id);
+                    }, 300);
+                }
+            }
+
+            success(message, duration = 3000) {
+                return this.show(message, 'success', duration);
+            }
+
+            info(message, duration = 3000) {
+                return this.show(message, 'info', duration);
+            }
+
+            warning(message, duration = 3000) {
+                return this.show(message, 'warning', duration);
+            }
+
+            error(message, duration = 3000) {
+                return this.show(message, 'error', duration);
+            }
+        }
+
+        // Initialize Toast Manager
+        window.toastManager = new ToastManager();
+        // Import LoadingPage class
+        class LoadingPage {
+            constructor() {
+                this.loadingElement = null;
+                this.isLoading = true;
+                
+                // เพิ่ม body class ทันทีเมื่อเริ่มโหลด
+                document.body.classList.remove('content-loaded');
+                this.createLoadingElement();
+                this.init();
+            }
+
+            createLoadingElement() {
+                this.loadingElement = document.createElement('div');
+                this.loadingElement.id = 'loading-page';
+                this.loadingElement.className = 'loading-page';
+                
+                this.loadingElement.innerHTML = `
+                    <div class="loading-container">
+                        <div class="loading-logo">
+                            <div class="hero-mouse-logo-glass w-32 h-20 rounded-full flex items-center justify-center mb-6 mx-auto transform-gpu">
+                                <i class="fas fa-mouse text-white/120 text-4xl drop-shadow-lg relative z-10 transform-gpu"></i>
+                            </div>
+                            <h1 class="loading-title">HYPE-MACRO</h1>
+                            <p class="loading-subtitle">Pro Gaming Experience</p>
+                        </div>
+                        <div class="loader"></div>
+                        <div class="loading-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                            <p class="progress-text">กำลังโหลด...</p>
+                        </div>
+                    </div>
+                `;
+
+                document.body.appendChild(this.loadingElement);
+            }
+
+            init() {
+                this.startProgressAnimation();
+                this.simulateLoading();
+            }
+
+            startProgressAnimation() {
+                const progressFill = this.loadingElement?.querySelector('.progress-fill');
+                if (progressFill) {
+                    progressFill.style.width = '0%';
+                    progressFill.style.transition = 'width 0.8s ease-out'; // เปลี่ยนจาก 2.5s เป็น 0.8s
+                    
+                    setTimeout(() => {
+                        progressFill.style.width = '100%';
+                    }, 100);
+                }
+            }
+
+            simulateLoading() {
+                const progressText = this.loadingElement?.querySelector('.progress-text');
+                const loadingSteps = [
+                    'กำลังเตรียมข้อมูล...',
+                    'กำลังโหลดธีม...',
+                    'กำลังโหลดคอมโพเนนต์...',
+                    'เกือบเสร็จแล้ว...'
+                ];
+
+                let currentStep = 0;
+                const stepInterval = setInterval(() => {
+                    if (progressText && currentStep < loadingSteps.length) {
+                        progressText.textContent = loadingSteps[currentStep];
+                        currentStep++;
+                    } else {
+                        clearInterval(stepInterval);
+                        setTimeout(() => {
+                            this.hideLoading();
+                        }, 100); // ลดจาก 500ms เป็น 100ms
+                    }
+                }, 200); // เปลี่ยนจาก 500ms เป็น 200ms ต่อ step
+            }
+
+            hideLoading() {
+                if (this.loadingElement) {
+                    // เริ่ม fade out animation
+                    this.loadingElement.classList.add('fade-out');
+                    
+                    // เปลี่ยน body class เพื่อเริ่มการเปลี่ยนผ่านพื้นหลัง
+                    document.body.classList.add('content-loaded');
+                    
+                    setTimeout(() => {
+                        if (this.loadingElement && this.loadingElement.parentNode) {
+                            this.loadingElement.parentNode.removeChild(this.loadingElement);
+                        }
+                        this.isLoading = false;
+                        this.onLoadingComplete();
+                    }, 800);
+                }
+            }
+
+            onLoadingComplete() {
+                document.dispatchEvent(new CustomEvent('loadingComplete'));
                 console.log('การโหลดเสร็จสิ้นแล้ว!');
+            }
+
+            isCurrentlyLoading() {
+                return this.isLoading;
+            }
+
+            forceHide() {
+                if (this.isLoading) {
+                    this.hideLoading();
+                }
+            }
+        }
+
+        // Theme Management System
+        class ThemeManager {
+            constructor() {
+                this.init();
+            }
+
+            init() {
+                this.isInitialized = false;
+                
+                // ตรวจสอบ theme ที่บันทึกไว้ใน localStorage หรือใช้ system preference
+                const savedTheme = localStorage.getItem('theme');
+                const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                const initialTheme = savedTheme || systemTheme;
+
+                this.setTheme(initialTheme);
+                this.setupThemeToggle();
+                
+                // Mark as initialized after setup is complete
+                this.isInitialized = true;
+            }
+
+            setTheme(theme) {
+                const htmlElement = document.documentElement;
+                
+                // อัปเดต data-theme attribute
+                htmlElement.setAttribute('data-theme', theme);
+                
+                // อัปเดต Tailwind classes
+                if (theme === 'dark') {
+                    htmlElement.classList.add('dark');
+                } else {
+                    htmlElement.classList.remove('dark');
+                }
+
+                // บันทึกใน localStorage
+                localStorage.setItem('theme', theme);
+                
+                // อัปเดต aria-label ของปุ่ม
+                const themeToggle = document.getElementById('theme-toggle');
+                if (themeToggle) {
+                    themeToggle.setAttribute('aria-label', theme);
+                }
+
+                // แสดงการแจ้งเตือนด้วย Toast (ยกเว้นการตั้งค่าครั้งแรก)
+                if (window.toastManager && this.isInitialized) {
+                    const themeText = theme === 'dark' ? 'โหมดมืด' : 'โหมดสว่าง';
+                    const icon = theme === 'dark' ? '🌙' : '☀️';
+                    window.toastManager.success(`${icon} เปลี่ยนเป็น${themeText}แล้ว`, 2000);
+                }
+
+                console.log(`🎨 Theme changed to: ${theme}`);
+            }
+
+            toggleTheme() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                this.setTheme(newTheme);
+            }
+
+            setupThemeToggle() {
+                const themeToggle = document.getElementById('theme-toggle');
+                if (themeToggle) {
+                    themeToggle.addEventListener('click', () => {
+                        this.toggleTheme();
+                    });
+                }
+            }
+        }
+
+        // Event listener สำหรับปุ่มทดสอบ
+        document.addEventListener('DOMContentLoaded', () => {
+            const testBtn = document.getElementById('testLoadingBtn');
+            const statusIndicator = document.getElementById('statusIndicator');
+            const mainInterface = document.querySelector('.main-interface');
+            let testCount = 0;
+
+            // เริ่มต้น Theme Manager
+            const themeManager = new ThemeManager();
+
+            // >>> สร้าง LoadingPage ครั้งแรกตอน DOM โหลดเสร็จ เพื่อแสดง initial loading <<<
+            const initialLoadingPage = new LoadingPage();
+
+            // >>> ฟัง event การโหลดเสร็จแบบ global (ตั้งแต่เริ่มต้น)
+            document.addEventListener('loadingComplete', () => {
+                console.log('✅ การโหลดเสร็จสิ้นแล้ว!');
+                
+                // กรณีที่เป็นการโหลดหน้าเว็บครั้งแรก (testCount = 0)
+                if (testCount === 0) {
+                    setTimeout(() => {
+                        if (window.toastManager) {
+                            window.toastManager.success('🎉 โหลดหน้าเสร็จเรียบร้อยแล้ว!', 3000);
+                        }
+                    }, 500);
+                } else {
+                    // กรณีที่เป็นการทดสอบ (testCount > 0)
+                    setTimeout(() => {
+                        testBtn.disabled = false;
+                        testBtn.innerHTML = '<i class="fas fa-play mr-2"></i>เริ่มทดสอบหน้าโหลด';
+                        testBtn.className = testBtn.className.replace('bg-gray-600', 'test-button');
+                        
+                        // อัปเดต status indicator สำเร็จ
+                        statusIndicator.innerHTML = `<i class="ri-check-line"></i><span>ทดสอบเสร็จแล้ว (${testCount} ครั้ง)</span>`;
+                        statusIndicator.className = 'status-indicator mx-auto bg-green-500/10 border-green-500/30 text-green-400';
+                        
+                        // แสดง interface อีกครั้งหลังจากโหลดเสร็จ
+                        if (mainInterface) {
+                            mainInterface.style.opacity = '1';
+                            mainInterface.style.visibility = 'visible';
+                        }
+                        
+                        // แสดงข้อความแจ้งเตือน
+                        if (testCount === 1) {
+                            setTimeout(() => {
+                                const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+                                const themeText = currentTheme === 'dark' ? 'โหมดมืด' : 'โหมดสว่าง';
+                                
+                                window.toastManager.success(
+                                    `🎉 การทดสอบหน้าโหลดเสร็จสิ้น!\n\n✨ ฟีเจอร์ที่ทดสอบได้:\n• Morphing Text Animation\n• Progress Bar\n• Fade In/Out Effects\n• Custom Event Handling\n• Theme Toggle (ปัจจุบัน: ${themeText})\n\nคลิกปุ่มอีกครั้งเพื่อทดสอบใหม่\n💡 ลองเปลี่ยน theme และทดสอบอีกครั้ง!`,
+                                    5000
+                                );
+                            }, 100);
+                        } else {
+                            setTimeout(() => {
+                                window.toastManager.info(`✅ ทดสอบครั้งที่ ${testCount} เสร็จสิ้น!`, 2000);
+                            }, 100);
+                        }
+                    }, 200);
+                }
             });
+            
+            // แสดง interface ทันทีเมื่อ DOM พร้อม
+            setTimeout(() => {
+                if (mainInterface) {
+                    mainInterface.style.opacity = '1';
+                    mainInterface.style.visibility = 'visible';
+                }
+                // แสดง status indicator หลังจาก interface แสดงแล้ว
+                setTimeout(() => {
+                    if (statusIndicator) {
+                        statusIndicator.style.display = 'inline-flex';
+                    }
+                }, 200);
+            }, 100);
+            
+            testBtn.addEventListener('click', () => {
+                testCount++;
+                console.log(`🚀 เริ่มทดสอบหน้าโหลดครั้งที่ ${testCount}...`);
+                
+                // อัปเดตสถานะปุ่ม
+                testBtn.disabled = true;
+                testBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>กำลังทดสอบ...';
+                testBtn.className = testBtn.className.replace('test-button', 'bg-gray-600');
+                
+                // อัปเดต status indicator
+                statusIndicator.innerHTML = '<i class="ri-loader-4-line animate-spin"></i><span>กำลังทดสอบ...</span>';
+                statusIndicator.className = 'status-indicator mx-auto bg-yellow-500/10 border-yellow-500/30 text-yellow-400';
+                
+                // สร้างหน้าโหลดใหม่
+                const loadingPage = new LoadingPage();
+            });
+            
+            // เพิ่มการจัดการ keyboard shortcut
+            document.addEventListener('keydown', (e) => {
+                if (e.code === 'Space' && !testBtn.disabled) {
+                    e.preventDefault();
+                    testBtn.click();
+                }
+                
+                // เพิ่ม keyboard shortcut สำหรับ theme toggle
+                if (e.code === 'KeyT' && e.ctrlKey) {
+                    e.preventDefault();
+                    themeManager.toggleTheme();
+                }
+            });
+            
+            console.log('🎮 Loading Page Test พร้อมใช้งาน!');
+            console.log('💡 กดปุ่ม Space หรือคลิกปุ่มเพื่อทดสอบ');
+            console.log('🎨 กดปุ่ม Theme หรือ Ctrl+T เพื่อเปลี่ยน theme');
         });
     </script>
 </body>

@@ -1,12 +1,13 @@
-# 🎮 HYPE-MA### 🚀 **Advanced Features**
+# 🎮 HYPE-MACRO Vite 🚀
+## **Advanced Features**
 - 🔄 **Futuristic Loading Page** - หน้าโหลดแบบ cyberpunk พร้อม morphing text effects
-- 🎦 **YouTube Video Carousel** - คาร์รูเซลวิดีโอแบบอัตโนมัติพร้อมการควบคุมด้วยตนเอง
+- 🎦 **Bootstrap Video Carousel** - คาร์รูเซลวิดีโอแบบ Bootstrap พร้อมระบบ Timeline Auto-play
 - 🎬 **Random Video Background** - พื้นหลังวิดีโอแบบสุ่มเพื่อประสบการณ์ที่น่าประทับใจ
+- ⏱️ **Auto-play Timeline System** - ระบบแสดงเวลาการเล่นอัตโนมัติพร้อมแถบความคืบหน้า
 - ✨ **Smooth Animations** - แอนิเมชั่นที่ลื่นไหลและสวยงาม
-- 🧩 **Modular Architecture** - โครงสร้างโค้ดแบบแยกส่วนเพื่อการบำรุงรักษาที่ง่าย
-- 🎯 **Smart Hover Manager** - ระบบจัดการ hover conflicts ระหว่างกลุ่มต่างๆ อัตโนมัติte - Premium Gaming Mouse Website
+- 🧩 **Modular Architecture** - โครงสร้างโค้ดแบบแยกส่วนเพื่อการบำรุงรักษาที่ง่ายte - Premium Gaming Mouse Website
 
-เว็บไซต์แสดงเมาส์เกมมิ่งพรีเมียมที่พัฒนาด้วย **Vite + TypeScript** พร้อมด้วยระบบ **Loading Page** และ **Modular Architecture** ที่ทันสมัย
+เว็บไซต์แสดงเมาส์เกมมิ่งพรีเมียมที่พัฒนาด้วย **Vite + TypeScript** พร้อมด้วยระบบ **Loading Page**, **Bootstrap-style Carousel** และ **Modular Architecture** ที่ทันสมัย
 
 ## ✨ คุณสมบัติเด่น
 
@@ -37,27 +38,33 @@
 
 ```
 Hype-Macro Vite/
+├── config/
+│   └── tailwind.config.js      # tailwind config file
 ├── public/
 │   └── vite.svg                # Vite logo
 ├── src/
 │   ├── components/
 │   │   ├── Animations.ts        # Animation controllers และ intersection observers
-│   │   ├── HoverManager.ts      # ระบบจัดการ hover conflicts ระหว่างกลุ่ม
 │   │   ├── LoadingPage.ts       # ระบบ loading page แบบ cyberpunk
-│   │   ├── Navigation.ts        # Mobile menu และ smooth navigation
+│   │   ├── Nav.ts               # Mobile menu และ smooth navigation
+│   │   ├── RandomVdoBg.ts       # Random video background system
 │   │   ├── ThemeToggle.ts       # ระบบ dark/light theme switching
-│   │   ├── VideoBackground.ts   # Random video background system
-│   │   └── VideoCarousel.ts     # YouTube video carousel controller
+│   │   └── VideoCarousel.ts     # Bootstrap-style video carousel controller
 │   ├── types/
 │   │   └── index.ts             # TypeScript type definitions
 │   ├── main.ts                 # Entry point หลัก
-│   ├── style.css               # CSS หลักพร้อม loading animations
+│   ├── style.css               # CSS หลักพร้อม carousel และ timeline animations
 │   ├── typescript.svg          # TypeScript logo
 │   └── vite-env.d.ts           # Vite type definitions
-├── index.html                 # HTML หลัก
+├── test/
+│   └── loading-test.html       # Debug loadscreen
+├── .gitattributes             # Git attributes configuration
+├── .gitignore                 # Git ignore rules
+├── index.html                 # HTML หลักพร้อมโครงสร้าง Bootstrap carousel
+├── package-lock.json          # Lock file for dependencies
 ├── package.json               # Dependencies และ scripts
-├── tsconfig.json              # TypeScript configuration
-└── README.md                  # เอกสารนี้
+├── README.md                  # เอกสารนี้
+└── tsconfig.json              # TypeScript configuration
 ```
 
 ## 🚀 การติดตั้งและใช้งาน
@@ -115,9 +122,11 @@ Hype-Macro Vite/
 - **Product Specifications** - รายละเอียดเทคนิคของเมาส์
 
 ### 🎬 **ส่วนรีวิว (Reviews)**
-- **YouTube Video Carousel** - คาร์รูเซลวิดีโอแบบอัตโนมัติ
-- **Navigation Controls** - ปุ่มควบคุมการเล่นด้วย liquid glass effects
-- **Auto-play System** - ระบบเล่นอัตโนมัติพร้อมการหยุดชั่วคราว
+- **Bootstrap Video Carousel** - คาร์รูเซลวิดีโอแบบ Bootstrap standard พร้อมการควบคุมที่สมบูรณ์
+- **Timeline Auto-play System** - ระบบเล่นอัตโนมัติพร้อมแถบความคืบหน้าแบบ real-time
+- **Indicator Navigation** - ตัวบ่งชี้การเล่นที่อยู่ตรงกลางล่างของวิดีโอ
+- **Smart Interaction** - หยุดเล่นอัตโนมัติเมื่อผู้ใช้โต้ตอบกับวิดีโอ
+- **Liquid Glass Effects** - เอฟเฟกต์กระจกเหลวสำหรับปุ่มควบคุม
 
 ### 🛍️ **ส่วนสินค้า (Products)**
 - **Product Grid** - กริดแสดงสินค้าแบบ responsive
@@ -128,11 +137,11 @@ Hype-Macro Vite/
 
 ### 🏗️ **Modular Architecture**
 ```typescript
-// Type-safe imports
+// Type-safe imports (updated modular structure)
 import { VideoBackground } from './components/VideoBackground.js';
 import { ThemeToggle } from './components/ThemeToggle.js';
 import { Navigation } from './components/Navigation.js';
-import { VideoCarousel } from './components/VideoCarousel.js';
+import { VideoCarousel } from './components/VideoCarousel.js'; // Bootstrap-style carousel
 import { Animations } from './components/Animations.js';
 import { LoadingPage } from './components/LoadingPage.js';
 ```
@@ -143,31 +152,15 @@ import { LoadingPage } from './components/LoadingPage.js';
 - **Morphing Text Effects** - เทคนิค CSS animation ขั้นสูง
 - **Hardware Acceleration** - ใช้ transform3d สำหรับประสิทธิภาพ
 
-### 🎪 **Video Carousel Features**
-- **Auto-rotation** - หมุนวิดีโออัตโนมัติทุก 10 วินาที
+### 🎪 **Bootstrap Video Carousel Features**
+- **Bootstrap Pattern** - ใช้โครงสร้างแบบ Bootstrap carousel standard
+- **Auto-rotation** - หมุนวิดีโออัตโนมัติทุก 10 วินาทีพร้อม timeline
+- **Timeline Progress Bar** - แถบความคืบหน้าแบบ real-time ที่แสดงเวลาที่เหลือ
 - **Manual Control** - ปุ่มควบคุมด้วยตนเองพร้อม liquid glass design
-- **Smooth Transitions** - การเปลี่ยนผ่านที่ลื่นไหลด้วย CSS transforms
-- **YouTube API Integration** - ใช้ iframe API สำหรับการฝังวิดีโอ
-
-### 🎯 **Smart Hover Manager System**
-- **Conflict Detection** - ตรวจจับการ hover พร้อมกันระหว่างกลุ่ม
-- **Priority-based Resolution** - แก้ไข conflicts ตาม priority level
-- **Visual Feedback** - แสดง notification และ visual indicators เมื่อเกิด conflict
-- **Auto State Management** - จัดการสถานะอัตโนมัติเมื่อเมาส์ออกจาก element
-
-```typescript
-// ตัวอย่างการใช้งาน HoverManager
-import { initializeHoverManager, getHoverManager } from './components/HoverManager';
-
-// เริ่มต้นระบบ
-const hoverManager = initializeHoverManager();
-
-// ตรวจสอบสถานะ
-console.log(hoverManager.getGroupStates());
-
-// รีเซ็ตสถานะทั้งหมด
-hoverManager.resetAllStates();
-```
+- **Indicator Navigation** - จุดบ่งชี้ที่อยู่ตรงกลางล่างของวิดีโอ
+- **Smart Auto-pause** - หยุดเล่นอัตโนมัติเมื่อผู้ใช้โต้ตอบ
+- **Keyboard Support** - รองรับการควบคุมด้วยลูกศร (← →)
+- **YouTube API Integration** - ใช้ iframe API สำหรับการฝังและตรวจจับการเล่น
 
 ## 🚀 Performance Optimization
 
@@ -195,6 +188,27 @@ hoverManager.resetAllStates();
 }
 ```
 
+### 🎥 **การปรับแต่ง Video Carousel**
+```typescript
+// src/components/VideoCarousel.ts
+private readonly autoPlayDuration: number = 10000; // ปรับเวลาเล่นอัตโนมัติ (มิลลิวินาที)
+private readonly maxVideos: number = 4; // จำนวนวิดีโอทั้งหมด
+```
+
+### 🎨 **การปรับแต่ง Timeline**
+```css
+/* src/style.css */
+.timeline-progress {
+  background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+  /* เปลี่ยนสีของแถบความคืบหน้า */
+}
+
+.auto-play-timeline {
+  background: rgba(0, 0, 0, 0.2);
+  /* เปลี่ยนพื้นหลังของ timeline */
+}
+```
+
 ### ⚙️ **การเพิ่มวิดีโอพื้นหลัง**
 ```typescript
 // src/components/VideoBackground.ts
@@ -212,35 +226,6 @@ const videoUrls = [
   --primary-color: #your-color;
   --secondary-color: #your-color;
   --accent-color: #your-color;
-}
-```
-
-### 🎯 **การปรับแต่ง Hover Manager**
-```typescript
-// src/components/HoverManager.ts
-// เพิ่มกลุ่ม conflict ใหม่
-conflictingGroups: string[][] = [
-  ['group1', 'group3'],
-  ['group2', 'group4'], // เพิ่มคู่ใหม่
-];
-
-// ปรับ priority
-const hoverGroup: HoverGroup = {
-  element: htmlElement,
-  isHovered: false,
-  priority: 3 // priority สูงขึ้น
-};
-```
-
-```css
-/* ปรับแต่ง visual effects */
-.hover-disabled {
-  opacity: 0.3 !important; /* ปรับความทึบแสง */
-  filter: grayscale(80%) !important; /* เพิ่ม grayscale */
-}
-
-.hover-conflict {
-  border-color: rgba(255, 0, 0, 0.8) !important; /* เปลี่ยนสีขอบ */
 }
 ```
 
@@ -268,12 +253,12 @@ const hoverGroup: HoverGroup = {
 
 ## 🔍 Browser Support
 
-| Browser | Version | Loading Effects | Video Carousel | Theme Toggle |
-|---------|---------|----------------|----------------|--------------|
-| Chrome  | 70+     | ✅            | ✅            | ✅           |
-| Firefox | 65+     | ✅            | ✅            | ✅           |
-| Safari  | 12+     | ✅            | ✅            | ✅           |
-| Edge    | 79+     | ✅            | ✅            | ✅           |
+| Browser | Version | Loading Effects | Video Carousel | Timeline Bar | Theme Toggle |
+|---------|---------|----------------|----------------|--------------|--------------|
+| Chrome  | 70+     | ✅            | ✅            | ✅          | ✅           |
+| Firefox | 65+     | ✅            | ✅            | ✅          | ✅           |
+| Safari  | 12+     | ✅            | ✅            | ✅          | ✅           |
+| Edge    | 79+     | ✅            | ✅            | ✅          | ✅           |
 
 ## 🐛 การแก้ไขปัญหา
 
@@ -292,9 +277,12 @@ npm run build -- --analyze
 ### ปัญหาที่อาจพบ
 1. **Loading page ไม่แสดง** - ตรวจสอบการ import LoadingPage.ts
 2. **Videos ไม่เล่น** - ตรวจสอบ URL วิดีโอและ network connection
-3. **Theme ไม่เปลี่ยน** - ตรวจสอบ localStorage permissions
-4. **TypeScript errors** - รัน `npm run build` เพื่อตรวจสอบ type errors
-5. **Animations กระตุก** - ตรวจสอบ CSS `will-change` properties
+3. **Timeline ไม่แสดง** - ตรวจสอบการโหลด VideoCarousel.ts และ CSS
+4. **Auto-play ไม่ทำงาน** - ตรวจสอบ browser autoplay policy และ console errors
+5. **Theme ไม่เปลี่ยน** - ตรวจสอบ localStorage permissions
+6. **TypeScript errors** - รัน `npm run build` เพื่อตรวจสอบ type errors
+7. **Animations กระตุก** - ตรวจสอบ CSS `will-change` properties
+8. **Indicator ไม่ทำงาน** - ตรวจสอบ Bootstrap carousel structure ใน HTML
 
 ## 🏆 Features Showcase
 
@@ -315,6 +303,8 @@ npm run build -- --analyze
 - Optimized bundle splitting
 - Lazy loading สำหรับ components
 - Hardware-accelerated animations
+- Efficient timeline update intervals (50ms)
+- Smart auto-play management
 
 ## 📈 Future Enhancements
 
@@ -323,6 +313,8 @@ npm run build -- --analyze
 - 🛒 **E-commerce Integration** - ระบบสั่งซื้อสินค้า
 - 📧 **Newsletter System** - ระบบจดหมายข่าว
 - 🔒 **User Authentication** - ระบบสมาชิก
+- 🎯 **Enhanced Timeline** - Timeline แบบกำหนดเองได้
+- 📱 **Touch Gestures** - รองรับการสัมผัสสำหรับ mobile
 
 ## 👨‍💻 ผู้พัฒนา
 

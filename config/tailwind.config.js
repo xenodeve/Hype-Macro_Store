@@ -26,7 +26,6 @@ window.tailwindConfig = {
       addVariant('group1-hover', '.group1:hover &');
       addVariant('group2-hover', '.group2:hover &');
       addVariant('group3-hover', '.group3:hover &');
-      addVariant('group4-hover', '.group4:hover &');
       // เพิ่มได้ตามต้องการ
     }
   ]
