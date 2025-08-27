@@ -28,13 +28,6 @@
   /* เปลี่ยนเป็นสีดำเข้ม */
 }
 
-/* Override สำหรับ product cards ให้ใช้สี gray-800 แทน */
-.dark .bg-white.group,
-.dark .group.bg-white {
-  background-color: #1f2937 !important;
-  /* เปลี่ยนเป็น gray-800 สำหรับ product cards */
-}
-
 /* ข้อความดำในโหมดมืด */
 .dark .text-black {
   color: #ffffff;
