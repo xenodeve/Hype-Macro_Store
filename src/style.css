@@ -28,6 +28,13 @@
   /* เปลี่ยนเป็นสีดำเข้ม */
 }
 
+/* Override สำหรับ product cards ให้ใช้สี gray-800 แทน */
+.dark .bg-white.group,
+.dark .group.bg-white {
+  background-color: #1f2937 !important;
+  /* เปลี่ยนเป็น gray-800 สำหรับ product cards */
+}
+
 /* ข้อความดำในโหมดมืด */
 .dark .text-black {
   color: #ffffff;
@@ -179,6 +186,16 @@
 .card-hover:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.product-card {
+  background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+  border: 1px solid #e9ecef;
+}
+
+[data-theme="dark"] .product-card {
+  background: linear-gradient(145deg, #1a1a1a 0%, #2d2d2d 100%);
+  border: 1px solid #404040;
 }
 
 /* Bootstrap-style Video Carousel */
