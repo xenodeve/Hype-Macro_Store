@@ -9,7 +9,41 @@
     <!-- Tailwind CSS - เฟรมเวิร์ค CSS สำหรับจัดแต่งหน้าเว็บ -->
     <script src="https://cdn.tailwindcss.com"></script> <!-- โหลด Tailwind CSS จาก CDN -->
 
-    <script src="./config/tailwind.config.js"></script> <!-- tailwind config -->
+    <!-- Tailwind CSS Configuration -->
+    <script>
+        // กำหนด config สำหรับ dark mode colors
+        const darkModeColors = {
+            blue: "#2997FF", // สีน้ำเงินหลัก
+            gray: { // สีเทาต่างๆ
+                DEFAULT: "#86868b", // สีเทาเริ่มต้น
+                100: "#f3f4f6",  // สีเทาอ่อน
+                200: "#e6e6e6", // สีเทากลาง
+                300: "#ffffff", // สีขาว
+            },
+            zinc: "#101010", // สีดำเข้ม
+        };
+
+        // ตั้งค่า Tailwind Config
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: darkModeColors,
+                    fontFamily: {
+                        'ibmplexthai': ['IBM Plex Sans Thai', 'sans-serif'],
+                    }
+                }
+            },
+            plugins: [
+                function ({ addVariant }) { //เพิ่ม variable เพื่อสามารถใช้ Multi Group ได้
+                    addVariant('group1-hover', '.group1:hover &');
+                    addVariant('group2-hover', '.group2:hover &');
+                    addVariant('group3-hover', '.group3:hover &');
+                    // เพิ่มได้ตามต้องการ
+                }
+            ]
+        };
+    </script>
     <link rel="stylesheet" href="./src/style.css"> <!-- import css -->
 
     <!-- Google Fonts - โหลดฟอนต์จาก Google -->
@@ -218,7 +252,7 @@
     <section id="features" class="py-20 bg-gray-50 dark:bg-gray-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 group">
-                <h2 class="text-4xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white group-hover:scale-110 transition-all duration-500 ease-in-out">
+                <h2 class="text-4xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white group-hover:scale-110 transition-transform duration-500 ease-in-out">
                     จุดเด่นที่โดดเด่น
                 </h2>
                 <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto group-hover:scale-110 transition-transform transform-gpu duration-500 ease-in-out">
