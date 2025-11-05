@@ -14,6 +14,9 @@ const darkModeColors = {
 window.tailwindConfig = {
     darkMode: 'class',
     theme: {
+        fontFamily: {
+            sans: ['IBM Plex Sans Thai', 'sans-serif'],
+        },
         extend: {
             colors: darkModeColors,
             fontFamily: {

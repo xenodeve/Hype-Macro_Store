@@ -1,0 +1,30 @@
+[
+  {
+    "name": "VXE R1 Pro Max",
+    "description": "High-performance wireless gaming mouse with 8K polling rate",
+    "price": 2990,
+    "image": "https://ik.imagekit.io/xenodev/Mini%20Project/VXE%20R1%20Pro%20Max?updatedAt=1756072064850",
+    "stock": 50
+  },
+  {
+    "name": "VXE R1 Pro",
+    "description": "Professional wireless gaming mouse with precision sensor",
+    "price": 1990,
+    "image": "https://ik.imagekit.io/xenodev/Mini%20Project/VXE%20R1%20Pro%20v2?updatedAt=1756071791492",
+    "stock": 100
+  },
+  {
+    "name": "Red Square x VXE R1 SE+",
+    "description": "Limited edition collaboration gaming mouse",
+    "price": 990,
+    "image": "https://ik.imagekit.io/xenodev/Mini%20Project/Red%20Square%20x%20VXE%20R1%20SE+%20Black%20no%20text?updatedAt=1756071241251",
+    "stock": 30
+  },
+  {
+    "name": "Dark Project x VXE R1 Pro Max",
+    "description": "Premium collaboration gaming mouse with exclusive design",
+    "price": 3990,
+    "image": "https://ik.imagekit.io/xenodev/Mini%20Project/Dark%20Project%20x%20VXE%20R1%20Pro%20Max?updatedAt=1756069833997",
+    "stock": 20
+  }
+]
