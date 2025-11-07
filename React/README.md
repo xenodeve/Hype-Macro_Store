@@ -411,6 +411,6 @@ npm update
 
 ---
 
-**Last Updated**: 2025-11-06  
-**Version**: 2.0.0  
+**Last Updated**: 2025-11-07  
+**Version**: 2.1.0  
 **Status**: ✅ Production Ready
