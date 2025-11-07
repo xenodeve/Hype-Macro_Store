@@ -6,6 +6,7 @@ import { addItem, removeItem, updateQty, clearCart, selectCartItems, selectCartS
 import { fetchProducts, selectProducts, selectProductsStatus } from '../features/products/productsSlice'
 import Counter from './Counter'
 import CheckoutProgress from './CheckoutProgress'
+import UnpaidOrderAlert from './UnpaidOrderAlert'
 
 /**
  * Currency Formatter
@@ -60,6 +61,10 @@ const Cart = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
       <CheckoutProgress currentStep={1} />
+      
+      {/* แจ้งเตือน Unpaid Orders */}
+      {user && <UnpaidOrderAlert />}
+      
       <motion.div
         initial={{ opacity: 0, y: 20, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}

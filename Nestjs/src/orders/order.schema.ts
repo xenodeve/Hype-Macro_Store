@@ -62,6 +62,32 @@ export class Order {
 
   @Prop({ default: 'pending' })
   status: string;
+
+  // ฟิลด์สำหรับ Payment
+  @Prop({ default: 'pending' }) // pending, paid, cancelled, expired
+  paymentStatus: string;
+
+  @Prop() // QR Code Data URL
+  qrCodeData: string;
+
+  @Prop() // เวลาหมดอายุของ QR Code
+  paymentExpiry: Date;
+
+  @Prop() // Transaction ID จากธนาคาร
+  transactionId: string;
+
+  @Prop() // วันที่ชำระเงิน
+  paidAt: Date;
+
+  @Prop() // URL ของรูปสลิปที่อัพโหลด
+  slipImageUrl: string;
+
+  @Prop({ default: false }) // สถานะว่ากดยืนยันการชำระเงินแล้วหรือไม่ (รอส่งสลิป)
+  hasConfirmedPayment: boolean;
+
+  // Timestamps (created by Mongoose automatically)
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export const OrderSchema = SchemaFactory.createForClass(Order);
