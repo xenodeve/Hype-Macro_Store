@@ -2,6 +2,8 @@ import {
   Controller,
   Post,
   Get,
+  Delete,
+  Patch,
   Body,
   Param,
   UseGuards,
@@ -27,8 +29,26 @@ export class OrdersController {
     return this.ordersService.findByUserId(req.user.userId);
   }
 
+  @UseGuards(JwtAuthGuard)
+  @Get('unpaid/list')
+  findUnpaidOrders(@Request() req) {
+    return this.ordersService.findUnpaidOrders(req.user.userId);
+  }
+
   @Get(':orderId')
   findByOrderId(@Param('orderId') orderId: string) {
     return this.ordersService.findByOrderId(orderId);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete(':orderId')
+  deleteOrder(@Request() req, @Param('orderId') orderId: string) {
+    return this.ordersService.deleteOrder(req.user.userId, orderId);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Patch(':orderId/confirm-payment')
+  confirmPayment(@Request() req, @Param('orderId') orderId: string) {
+    return this.ordersService.confirmPayment(req.user.userId, orderId);
   }
 }
