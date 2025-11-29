@@ -1,3 +1,13 @@
+# 🎮 HYPE-MACRO Store - Full-Stack Application
+
+Full-stack web application สำหรับแสดงและจำหน่ายผลิตภัณฑ์ **HYPE-MACRO Premium Gaming Mouse** ที่พัฒนาด้วย **React + TypeScript** สำหรับ Frontend และ **NestJS + MongoDB** สำหรับ Backend API
+
+> **📝 Latest Release**: [v2.1.0 Release Notes](./RELEASE_NOTES.md) - E-Commerce Complete Edition
+
+---
+
+## 🌟 คุณสมบัติเด่น
+
 ### 🖱️ **Premium Gaming Mouse Features**
 - 🔧 **Omron Switch 20M** - สวิตช์คุณภาพสูงที่ทนทานถึง 20 ล้านครั้งการกด
 - ⚡ **Polling Rate 8K** - อัตราการอัปเดตตำแหน่ง 8,000 Hz ที่รวดเร็วที่สุดในตลาด
@@ -419,46 +429,9 @@ async customEndpoint() {
 
 ## 🌐 การ Deploy
 
-### **🚀 Vercel Deployment (แนะนำ - Fullstack)**
+### **Backend Deployment**
 
-โปรเจคนี้รองรับการ deploy แบบ fullstack (Frontend + Backend) บน Vercel แล้ว!
-
-#### **Quick Start**
-```bash
-# ติดตั้ง Vercel CLI
-npm install -g vercel
-
-# Deploy
-cd Hype-Macro_Store
-vercel
-
-# หรือ deploy ผ่าน Vercel Dashboard
-# 1. Import GitHub repository
-# 2. ตั้งค่า Environment Variables (ดูด้านล่าง)
-# 3. Deploy!
-```
-
-#### **Environment Variables ที่ต้องตั้งค่า**
-```env
-# Backend
-MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/hype-macro-store
-JWT_SECRET=your-super-secret-random-string
-JWT_EXPIRATION=7d
-FRONTEND_URL=https://your-app.vercel.app
-NODE_ENV=production
-
-# Frontend
-VITE_API_URL=/api
-```
-
-#### **📚 คำแนะนำโดยละเอียด**
-อ่านคู่มือฉบับสมบูรณ์ที่ → **[VERCEL_DEPLOYMENT.md](./VERCEL_DEPLOYMENT.md)**
-
----
-
-### **Backend Deployment (แยกต่างหาก)**
-
-#### **Railway / Render**
+#### **Railway / Render (แนะนำ)**
 ```bash
 # เชื่อมต่อ GitHub repository
 # ตั้งค่า Environment Variables:
@@ -478,9 +451,16 @@ heroku config:set JWT_SECRET=your-secret
 git subtree push --prefix Nestjs heroku main
 ```
 
----
+### **Frontend Deployment**
 
-### **Frontend Deployment (แยกต่างหาก)**
+#### **Vercel (แนะนำ)**
+```bash
+cd React
+vercel
+
+# Environment Variables:
+# VITE_API_URL=https://your-backend-api.com/api
+```
 
 #### **Netlify**
 ```bash
@@ -500,7 +480,6 @@ npm run build
 
 # Deploy dist folder to gh-pages branch
 ```
-
 
 ---
 
@@ -764,6 +743,6 @@ This project is for educational purposes.
 
 ---
 
-**Last Updated**: 2025-11-29
-**Version**: 2.2.0
-**Status**: ✅ Production Ready (E-Commerce + Vercel Deployment Support)
+**Last Updated**: 2025-11-07
+**Version**: 2.1.0
+**Status**: ✅ Production Ready (E-Commerce Features Complete)
