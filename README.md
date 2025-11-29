@@ -4,7 +4,7 @@ Full-stack web application สำหรับแสดงและจำหน�
 
 > **📝 Latest Release**: [v2.1.0 Release Notes](./RELEASE_NOTES.md) - E-Commerce Complete Edition
 >
-> <img width="1920" height="1080" alt="Screenshot 2025-11-29 101456" src="https://github.com/user-attachments/assets/23dc6a42-4351-4e05-8bce-8df7e7bf48ba" />
+> <img width="1899" height="1080" alt="Screenshot 2025-11-29 101456" src="https://github.com/user-attachments/assets/01bc5f48-6738-409e-a514-b21fca7adee9" />
 
 
 ---
