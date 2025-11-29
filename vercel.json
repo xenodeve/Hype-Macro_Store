@@ -1,0 +1,33 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "React/package.json",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "dist"
+            }
+        },
+        {
+            "src": "api/index.ts",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/(.*)",
+            "dest": "/api/index.ts"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/React/$1"
+        }
+    ],
+    "env": {
+        "MONGODB_URI": "@mongodb_uri",
+        "JWT_SECRET": "@jwt_secret",
+        "JWT_EXPIRATION": "7d",
+        "FRONTEND_URL": "@frontend_url",
+        "NODE_ENV": "production"
+    }
+}
