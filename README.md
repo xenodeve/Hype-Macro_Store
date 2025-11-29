@@ -3,6 +3,9 @@
 Full-stack web application สำหรับแสดงและจำหน่ายผลิตภัณฑ์ **HYPE-MACRO Premium Gaming Mouse** ที่พัฒนาด้วย **React + TypeScript** สำหรับ Frontend และ **NestJS + MongoDB** สำหรับ Backend API
 
 > **📝 Latest Release**: [v2.1.0 Release Notes](./RELEASE_NOTES.md) - E-Commerce Complete Edition
+>
+> <img width="1920" height="1080" alt="Screenshot 2025-11-29 101456" src="https://github.com/user-attachments/assets/23dc6a42-4351-4e05-8bce-8df7e7bf48ba" />
+
 
 ---
 
