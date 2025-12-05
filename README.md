@@ -2,6 +2,11 @@
 
 Full-stack web application สำหรับแสดงและจำหน่ายผลิตภัณฑ์ **HYPE-MACRO Premium Gaming Mouse** ที่พัฒนาด้วย **React + TypeScript** สำหรับ Frontend และ **NestJS + MongoDB** สำหรับ Backend API
 
+> **📝 Latest Release**: [v2.1.0 Release Notes](./RELEASE_NOTES.md) - E-Commerce Complete Edition 
+>
+> <img width="1899" height="1080" alt="Screenshot 2025-11-29 101456" src="https://github.com/user-attachments/assets/01bc5f48-6738-409e-a514-b21fca7adee9" />
+
+
 ---
 
 ## 🌟 คุณสมบัติเด่น
@@ -9,7 +14,7 @@ Full-stack web application สำหรับแสดงและจำหน�
 ### 🖱️ **Premium Gaming Mouse Features**
 - 🔧 **Omron Switch 20M** - สวิตช์คุณภาพสูงที่ทนทานถึง 20 ล้านครั้งการกด
 - ⚡ **Polling Rate 8K** - อัตราการอัปเดตตำแหน่ง 8,000 Hz ที่รวดเร็วที่สุดในตลาด
-- 💎 **Premium Materials** - ผลิตจากพลาสติก ABS คุณภาพสูงเคลือบสีขาวเนื้อด้าน
+- 💎 **Premium Materials** - ผลิตจากพลาสติก ABS คุณภาะสูงเคลือบสีขาวเนื้อด้าน
 - 🎯 **Professional Gaming** - ออกแบบมาเพื่อเกมเมอร์ทุกระดับ
 
 ### 🚀 **Full-Stack Architecture**
@@ -23,17 +28,30 @@ Full-stack web application สำหรับแสดงและจำหน�
 ### 🎨 **Modern Web Design**
 - 🌓 **Dark/Light Mode** - รองรับโหมดมืดและสว่างพร้อมการปรับตามระบบอัตโนมัติ
 - 📱 **Fully Responsive** - ใช้งานได้ลื่นไหลในทุกอุปกรณ์และขนาดหน้าจอ
-- ✨ **Smooth Animations** - แอนิเมชั่นที่ลื่นไหลด้วย GSAP และ Motion
+- ✨ **Smooth Animations** - แอนิเมชั่นที่ลื่นไหลด้วย GSAP และ Framer Motion
 - 🎬 **Interactive UI** - ประสบการณ์ผู้ใช้ที่น่าประทับใจ
 - 🔄 **Real-time Updates** - อัปเดตข้อมูลแบบ real-time
 
+### � **E-Commerce Features**
+- �️ **Shopping Cart** - ระบบตะกร้าสินค้าที่สมบูรณ์พร้อม Redux state management
+- 📦 **Product Catalog** - แสดงสินค้าพร้อมรูปภาพ รายละเอียด และราคา
+- 👤 **User Profile** - จัดการข้อมูลส่วนตัว ที่อยู่จัดส่ง และบัตรเครดิต
+- � **Secure Authentication** - ระบบล็อกอิน/สมัครสมาชิกด้วย JWT
+- 💳 **Multiple Payment Methods** - รองรับบัตรเครดิต, QR Code (PromptPay), โอนธนาคาร
+- 📋 **Order Management** - ดูประวัติคำสั่งซื้อ ติดตามสถานะ และยกเลิกคำสั่งซื้อ
+- 🧾 **Slip Verification** - ระบบตรวจสอบสลิปอัตโนมัติด้วย promptparse API
+- � **Shipping Address** - บันทึกและจัดการที่อยู่จัดส่งหลายที่
+
 ### 🔧 **Advanced Features**
-- 🛒 **Product Management** - ระบบจัดการสินค้าที่สมบูรณ์
-- 👤 **User Authentication** - ระบบสมัครสมาชิกและเข้าสู่ระบบ
-- 📊 **RESTful API** - API ที่ออกแบบตามมาตรฐาน REST
-- 🔒 **Password Encryption** - เข้ารหัสรหัสผ่านด้วย bcrypt
-- ✅ **Data Validation** - ตรวจสอบความถูกต้องของข้อมูลทั้ง Frontend และ Backend
-- 🌐 **CORS Support** - รองรับการเชื่อมต่อข้าม domain
+- � **Payment Processing** - ระบบชำระเงินครบวงจร (QR Code, Bank Transfer, Credit Card)
+- 📱 **QR Code Generation** - สร้าง PromptPay QR Code แบบ real-time
+- ⏱️ **Payment Timer** - นับถอยหลังเวลาหมดอายุ QR Code
+- 🔔 **Pending Payment Notifications** - แจ้งเตือนคำสั่งซื้อที่รอชำระเงิน
+- 🔄 **Unpaid Order Recovery** - ดึงคำสั่งซื้อที่ยังไม่ชำระเงินกลับมาชำระต่อ
+- 🎯 **Payment Method Locking** - ล็อควิธีชำระเงินหลังเลือกแล้ว
+- ↩️ **Smart Navigation** - ระบบย้อนกลับที่ชาญฉลาดระหว่างขั้นตอนชำระเงิน
+- 📊 **Order Status Timeline** - แสดงสถานะคำสั่งซื้อแบบ timeline
+- 🗑️ **Order Cancellation** - ยกเลิกคำสั่งซื้อที่ยังไม่ได้ชำระเงิน
 
 ---
 
@@ -47,7 +65,8 @@ Full-stack web application สำหรับแสดงและจำหน�
 - **React Router DOM** - Client-side routing
 - **Axios** - HTTP client สำหรับเรียก API
 - **GSAP** - Animation library ระดับมืออาชีพ
-- **Motion** - Modern animation library สำหรับ React
+- **Framer Motion** - Modern animation library สำหรับ React
+- **Tailwind CSS** - Utility-first CSS framework
 - **ESLint** - Code linting และ quality checks
 
 ### ⚙️ **Backend (NestJS)**
@@ -58,6 +77,8 @@ Full-stack web application สำหรับแสดงและจำหน�
 - **Bcrypt** - Password hashing
 - **Class Validator** - DTO validation
 - **Class Transformer** - Object transformation
+- **Multer** - File upload middleware
+- **Promptparse** - Slip verification API integration
 - **Jest** - Testing framework
 - **Prettier** - Code formatting
 
@@ -70,32 +91,72 @@ Hype-Macro_Store/
 ├── React/                      # Frontend Application
 │   ├── src/
 │   │   ├── components/        # React components
-│   │   ├── pages/            # Page components
+│   │   │   ├── AppNav.tsx           # Navigation component
+│   │   │   ├── Cart.tsx             # Shopping cart
+│   │   │   ├── Shipping.tsx         # Shipping address form
+│   │   │   ├── Payment.tsx          # Payment methods & processing
+│   │   │   ├── PaymentSuccess.tsx   # Order confirmation
+│   │   │   ├── Profile.tsx          # User profile management
+│   │   │   ├── Orders.tsx           # Order history & management
+│   │   │   ├── Login.tsx            # Login page
+│   │   │   ├── Register.tsx         # Registration page
+│   │   │   ├── HomePage.tsx         # Landing page
+│   │   │   └── ...                  # Other components
+│   │   ├── features/          # Redux slices
+│   │   │   ├── auth/               # Authentication state
+│   │   │   ├── cart/               # Shopping cart state
+│   │   │   ├── checkout/           # Checkout state
+│   │   │   └── products/           # Products state
+│   │   ├── services/          # API services
+│   │   │   ├── api.ts              # Axios instance
+│   │   │   ├── authService.ts      # Auth API calls
+│   │   │   ├── orderService.ts     # Order API calls
+│   │   │   ├── productService.ts   # Product API calls
+│   │   │   ├── userService.ts      # User API calls
+│   │   │   └── paymentService.ts   # Payment & slip verification
 │   │   ├── store/            # Redux store
-│   │   ├── services/         # API services
-│   │   ├── types/            # TypeScript types
-│   │   ├── utils/            # Utility functions
+│   │   ├── preview/          # Animation & preview utilities
 │   │   ├── App.tsx           # Main App component
 │   │   └── main.tsx          # Entry point
 │   ├── public/               # Static assets
 │   ├── package.json          # Frontend dependencies
 │   ├── vite.config.ts        # Vite configuration
 │   ├── tsconfig.json         # TypeScript config
-│   └── README.md             # Frontend README
+│   └── tailwind.config.js    # Tailwind CSS config
 │
 ├── Nestjs/                    # Backend Application
 │   ├── src/
 │   │   ├── auth/             # Authentication module
+│   │   │   ├── auth.controller.ts
+│   │   │   ├── auth.service.ts
+│   │   │   ├── jwt.strategy.ts
+│   │   │   └── jwt-auth.guard.ts
 │   │   ├── users/            # Users module
+│   │   │   ├── users.controller.ts
+│   │   │   ├── users.service.ts
+│   │   │   ├── user.schema.ts
+│   │   │   └── dto/
 │   │   ├── products/         # Products module
-│   │   ├── common/           # Common utilities
+│   │   │   ├── products.controller.ts
+│   │   │   ├── products.service.ts
+│   │   │   └── product.schema.ts
+│   │   ├── orders/           # Orders module
+│   │   │   ├── orders.controller.ts
+│   │   │   ├── orders.service.ts
+│   │   │   ├── order.schema.ts
+│   │   │   └── order.dto.ts
+│   │   ├── database/         # Database configuration
+│   │   │   ├── database.module.ts
+│   │   │   └── seeders/
 │   │   ├── app.module.ts     # Root module
-│   │   └── main.ts           # Entry point
+│   │   ├── main.ts           # Entry point
+│   │   └── seed.ts           # Database seeder
+│   ├── install/              # Installation data
+│   │   └── product.json      # Product seeding data
 │   ├── test/                 # Test files
 │   ├── package.json          # Backend dependencies
 │   ├── tsconfig.json         # TypeScript config
-│   ├── nest-cli.json         # NestJS CLI config
-│   └── README.md             # Backend README
+│   └── nest-cli.json         # NestJS CLI config
 │
 └── README.md                  # This file
 ```
@@ -214,6 +275,22 @@ GET    /api/products/:id      # ข้อมูลสินค้าตาม ID
 POST   /api/products          # เพิ่มสินค้าใหม่ (Admin)
 PUT    /api/products/:id      # อัปเดตข้อมูลสินค้า (Admin)
 DELETE /api/products/:id      # ลบสินค้า (Admin)
+```
+
+### 📦 **Orders**
+```
+POST   /api/orders                        # สร้างคำสั่งซื้อใหม่
+GET    /api/orders/my-orders              # รายการคำสั่งซื้อของผู้ใช้
+GET    /api/orders/unpaid/list            # รายการคำสั่งซื้อที่ยังไม่ชำระเงิน
+GET    /api/orders/:orderId               # ข้อมูลคำสั่งซื้อตาม Order ID
+PATCH  /api/orders/:orderId/confirm-payment  # ยืนยันการชำระเงิน
+DELETE /api/orders/:orderId               # ยกเลิก/ลบคำสั่งซื้อ
+```
+
+### 💳 **Payment**
+```
+POST   /api/payment/qr-code               # สร้าง QR Code สำหรับชำระเงิน
+POST   /api/payment/verify-slip           # ตรวจสอบความถูกต้องของสลิป
 ```
 
 ---
@@ -460,10 +537,21 @@ npm run dev -- --debug  # Debug mode
 ### **User Model**
 ```typescript
 {
-  username: string;      // unique
-  email: string;         // unique
-  password: string;      // hashed
-  role: 'user' | 'admin';
+  name: string;          // ชื่อผู้ใช้
+  email: string;         // unique, อีเมล
+  password: string;      // hashed ด้วย bcrypt
+  phone: string;         // เบอร์โทรศัพท์
+  address: string;       // ที่อยู่
+  district: string;      // อำเภอ/เขต
+  city: string;          // เมือง
+  province: string;      // จังหวัด
+  postalCode: string;    // รหัสไปรษณีย์
+  savedCards: [{         // บัตรเครดิตที่บันทึกไว้
+    cardName: string;
+    cardNumber: string;  // encrypted
+    expiry: string;
+    cvv: string;         // encrypted
+  }];
   createdAt: Date;
   updatedAt: Date;
 }
@@ -472,14 +560,49 @@ npm run dev -- --debug  # Debug mode
 ### **Product Model**
 ```typescript
 {
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-  category: string;
-  stock: number;
-  features: string[];
-  isLimited: boolean;
+  name: string;          // ชื่อสินค้า
+  description: string;   // รายละเอียด
+  price: number;         // ราคา
+  image: string;         // URL รูปภาพ
+  category: string;      // หมวดหมู่
+  stock: number;         // จำนวนสินค้าคงเหลือ
+  features: string[];    // คุณสมบัติเด่น
+  isLimited: boolean;    // สินค้าจำกัดจำนวน
+  createdAt: Date;
+  updatedAt: Date;
+}
+```
+
+### **Order Model**
+```typescript
+{
+  userId: ObjectId;           // ref to User
+  orderId: string;            // unique order ID
+  items: [{                   // รายการสินค้า
+    productId: string;
+    name: string;
+    price: number;
+    qty: number;
+    image: string;
+  }];
+  address: {                  // ที่อยู่จัดส่ง
+    fullName: string;
+    phone: string;
+    address: string;
+    district: string;
+    province: string;
+    postalCode: string;
+  };
+  paymentMethod: string;      // 'card', 'qr', 'bank-transfer'
+  subtotal: number;           // ยอดรวม
+  status: string;             // 'pending', 'processing', 'shipped', 'delivered', 'cancelled'
+  paymentStatus: string;      // 'pending', 'paid', 'cancelled', 'expired'
+  qrCodeData: string;         // QR Code data URL
+  paymentExpiry: Date;        // เวลาหมดอายุ QR Code
+  transactionId: string;      // Transaction ID จากธนาคาร
+  paidAt: Date;              // วันที่ชำระเงิน
+  slipImageUrl: string;      // URL รูปสลิปที่อัปโหลด
+  hasConfirmedPayment: boolean;  // ยืนยันการโอนแล้ว
   createdAt: Date;
   updatedAt: Date;
 }
@@ -514,16 +637,20 @@ npm run dev -- --debug  # Debug mode
 ## 📈 Future Enhancements
 
 ### 🚀 **Planned Features**
-- 📊 **Admin Dashboard** - หน้าจัดการสำหรับ admin
-- 🛒 **Shopping Cart** - ตะกร้าสินค้าและระบบสั่งซื้อ
-- 💳 **Payment Integration** - เชื่อมต่อ payment gateway
-- 📧 **Email Notifications** - ส่ง email ยืนยันและแจ้งเตือน
-- 🔍 **Search & Filter** - ค้นหาและกรองสินค้า
+- 📊 **Admin Dashboard** - หน้าจัดการสำหรับ admin พร้อมสถิติและรายงาน
+- � **Shipping Integration** - เชื่อมต่อกับระบบขนส่ง (Kerry, Flash, Thailand Post)
+- 📧 **Email Notifications** - ส่ง email ยืนยันและแจ้งเตือนสถานะคำสั่งซื้อ
+- 🔍 **Advanced Search** - ค้นหาและกรองสินค้าแบบละเอียด
 - ⭐ **Product Reviews** - รีวิวและให้คะแนนสินค้า
+- 🎁 **Coupon System** - ระบบคูปองส่วนลด
 - 📱 **Mobile App** - React Native mobile application
-- 🌍 **Multi-language** - รองรับหลายภาษา
-- 📊 **Analytics Dashboard** - สถิติการใช้งาน
+- 🌍 **Multi-language** - รองรับหลายภาษา (TH/EN)
+- 📊 **Analytics Dashboard** - สถิติการขายและการใช้งาน
 - 🔔 **Real-time Notifications** - แจ้งเตือนแบบ real-time ด้วย WebSocket
+- 💬 **Live Chat Support** - แชทสดกับฝ่ายบริการลูกค้า
+- 🎨 **Product Customization** - ปรับแต่งสินค้าได้ (สี, โลโก้)
+- 📦 **Inventory Management** - ระบบจัดการสต็อกสินค้าแบบละเอียด
+- 🔄 **Return & Refund** - ระบบคืนสินค้าและคืนเงิน
 
 ---
 
@@ -537,7 +664,7 @@ npm run dev -- --debug  # Debug mode
 | **Frontend** | Redux Toolkit | State Management |
 | **Frontend** | React Router | Routing |
 | **Frontend** | Axios | HTTP Client |
-| **Frontend** | GSAP/Motion | Animations |
+| **Frontend** | GSAP/Framer Motion | Animations |
 | **Backend** | NestJS 10 | API Framework |
 | **Backend** | TypeScript | Type Safety |
 | **Backend** | MongoDB | Database |
@@ -619,6 +746,6 @@ This project is for educational purposes.
 
 ---
 
-**Last Updated**: 2025-11-05
-**Version**: 1.0.0
-**Status**: 🚧 In Active Development
+**Last Updated**: 2025-11-07
+**Version**: 2.1.0
+**Status**: ✅ Production Ready (E-Commerce Features Complete)

@@ -81,6 +81,17 @@ const UserMenu = ({ isMobile, closeMenu, userName, onLogout }: UserMenuProps) =>
             >
               ตั้งค่า
             </Link>
+            <Link
+              to="/orders"
+              onClick={() => {
+                setOpen(false)
+                if (isMobile) closeMenu()
+              }}
+              className={menuItemClass}
+              role="menuitem"
+            >
+              คำสั่งซื้อ
+            </Link>
             <button
               type="button"
               onClick={() => {

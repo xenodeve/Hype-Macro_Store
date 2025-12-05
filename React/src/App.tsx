@@ -11,6 +11,8 @@ import PaymentSuccess from './components/PaymentSuccess'
 import Login from './components/Login'
 import Register from './components/Register'
 import Profile from './components/Profile'
+import Orders from './components/Orders'
+import PendingPaymentNotification from './components/PendingPaymentNotification'
 import { useAppSelector } from './hooks'
 import { initializeTheme, reflectThemePreference, setupSystemThemeListener } from './preview/ThemeToggle'
 
@@ -30,8 +32,10 @@ const App = () => {
 	}, [])
 
 	return (
-		<AnimatePresence mode="wait">
-			<Routes location={location} key={location.pathname}>
+		<>
+			<PendingPaymentNotification />
+			<AnimatePresence mode="wait">
+				<Routes location={location} key={location.pathname}>
 				<Route path="/" element={<HomePage />} />
 				<Route path="/login" element={<AuthLayout><Login /></AuthLayout>} />
 				<Route path="/register" element={<AuthLayout><Register /></AuthLayout>} />
@@ -45,6 +49,17 @@ const App = () => {
 					element={
 						<RequireAuth>
 							<Profile />
+						</RequireAuth>
+					}
+				/>
+				{/* Orders Page */}
+				<Route
+					path="/orders"
+					element={
+						<RequireAuth>
+							<AuthLayout>
+								<Orders />
+							</AuthLayout>
 						</RequireAuth>
 					}
 				/>
@@ -62,6 +77,7 @@ const App = () => {
 				<Route path="*" element={<Navigate to="/" replace />} />
 			</Routes>
 		</AnimatePresence>
+		</>
 	)
 }
 

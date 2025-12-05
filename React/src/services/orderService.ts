@@ -34,6 +34,8 @@ export interface Order {
   paymentMethod: string;
   subtotal: number;
   status: string;
+  paymentStatus?: string;
+  hasConfirmedPayment?: boolean;
   createdAt: string;
   updatedAt: string;
 }
@@ -51,6 +53,20 @@ export const orderService = {
 
   async getMyOrders(): Promise<Order[]> {
     const response = await api.get('/orders/my-orders');
+    return response.data;
+  },
+
+  async deleteOrder(orderId: string): Promise<void> {
+    await api.delete(`/orders/${orderId}`);
+  },
+
+  async getUnpaidOrders(): Promise<Order[]> {
+    const response = await api.get('/orders/unpaid/list');
+    return response.data;
+  },
+
+  async confirmPayment(orderId: string): Promise<Order> {
+    const response = await api.patch(`/orders/${orderId}/confirm-payment`);
     return response.data;
   },
 };

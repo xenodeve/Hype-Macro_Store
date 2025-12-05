@@ -12,7 +12,7 @@ export type Address = {
   postcode: string
 }
 
-export type PaymentMethod = 'card' | 'qr'
+export type PaymentMethod = 'card' | 'qr' | 'bank-transfer'
 
 type CheckoutState = {
   shippingAddress: Address | null
